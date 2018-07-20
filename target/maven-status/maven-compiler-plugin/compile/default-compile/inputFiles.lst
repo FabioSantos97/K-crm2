@@ -1,11 +1,14 @@
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\model\ItemPedido.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\util\DataAccessLayerException.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\model\ProdutoGrade.java
+C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\dao\impl\TransportadoraDao.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\util\GerarTabelas.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\dao\interfaces\IGenericDAO.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\util\HibernateFactory.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\model\Regiao.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\model\Familia.java
+C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\dao\impl\TipoPedidoDao.java
+C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\dao\impl\CondPagDao.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\dao\impl\PedidoDao.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\model\Relacionamento.java
 C:\Users\rubem\Desktop\Workspace CRM\KCRM2\src\main\java\br\com\kadesh\model\Contato.java

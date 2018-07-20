@@ -10,7 +10,7 @@
 
             <b:jumbotron> 
                 <h:panelGroup>
-                    <h:form>
+                    <b:form>
 
                         <b:selectOneMenu id="cliente"
                                          value="#{pedidoMB.cliente}" 
@@ -65,6 +65,7 @@
 
 
 
+                        
                         <h3>Itens da Vendas</h3>
                         <b:dataTable  columnVisibility="false"
                                       value=""
@@ -73,13 +74,16 @@
                                       selectionMode="single"
                                       searching ="false"
                                       paginated="false"
+                                      info="false"
                                       >
 
-                            <b:dataTableColumn value="" label="Cliente" />
+                            <b:dataTableColumn value="" label="Item" />
 
 
                         </b:dataTable>
-                    </h:form>
+                        <b:commandButton look="primary" value="Salvar" action="#{pedidoMB.salvar}" icon-awesome="save" />
+                    </b:form>
+
                 </h:panelGroup>
             </b:jumbotron>
 

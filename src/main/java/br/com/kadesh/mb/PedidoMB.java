@@ -47,6 +47,11 @@ public class PedidoMB implements Serializable {
         transportadoras = transportadoraDao.findAll();
         tipoPedidos = tipoPedidoDao.findAll();
     }
+    
+    
+    
+    
+    
 
     public TransportadoraDao getTransportadoraDao() {
         return transportadoraDao;
