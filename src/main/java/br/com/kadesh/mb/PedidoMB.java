@@ -38,6 +38,7 @@ public class PedidoMB implements Serializable {
 
     public PedidoMB() {
         selectAll();
+        pedido = new Pedido();
     }
 
     public void selectAll() {
@@ -49,10 +50,14 @@ public class PedidoMB implements Serializable {
     }
     
     
+    public void salvar(){
+        
+        
+        
+        pedidoDao.create(pedido);
+    }
     
     
-    
-
     public TransportadoraDao getTransportadoraDao() {
         return transportadoraDao;
     }

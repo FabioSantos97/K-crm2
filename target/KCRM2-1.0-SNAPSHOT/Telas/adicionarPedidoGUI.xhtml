@@ -53,11 +53,6 @@
                         </b:selectOneMenu>
 
 
-
-
-
-
-
                         <b:inputText value="#{pedidoMB.pedido.numeroOrdemCompra}" label="Numero da Ordem de Compra" size="30" required="false" />
                         <b:message for="@previous" />
                         <b:inputText value="#{pedidoMB.pedido.observacoes}" label="Observações" size="100" required="false" />
@@ -65,7 +60,7 @@
 
 
 
-                        
+
                         <h3>Itens da Vendas</h3>
                         <b:dataTable  columnVisibility="false"
                                       value=""
@@ -81,7 +76,7 @@
 
 
                         </b:dataTable>
-                        <b:commandButton look="primary" value="Salvar" action="#{pedidoMB.salvar}" icon-awesome="save" />
+                        <b:commandButton look="primary" value="Salvar" action="#{pedidoMB.salvar()}" icon-awesome="save" />
                     </b:form>
 
                 </h:panelGroup>

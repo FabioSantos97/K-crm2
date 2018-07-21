@@ -33,6 +33,9 @@ public class Pedido implements Serializable {
     private String observacoes;
     private String situacao;
     
+    double valorTotal;
+    int quantidade;
+    
     @OneToMany
     private List<ItemPedido> itensPedido;
 
