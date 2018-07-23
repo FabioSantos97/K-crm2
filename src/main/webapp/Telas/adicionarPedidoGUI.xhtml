@@ -11,11 +11,26 @@
             <b:jumbotron> 
                 <h:panelGroup>
                     <b:form>
+                        <b:selectOneMenu id="tipoPedido"
+                                         value="#{pedidoMB.tipoPedido}" 
+                                         required="true"
+                                         label="Tipo"
+                                         span="2"
+                                         >
+                            <f:selectItem itemLabel="Tipo de Pedido" />
+                            <f:selectItems value="#{pedidoMB.tipoPedidos}"
+                                           var="tipo" 
+                                           itemLabel="#{tipo.nome}"
+                                           itemValue="#{tipo}"
+
+                                           />
+                        </b:selectOneMenu>
 
                         <b:selectOneMenu id="cliente"
                                          value="#{pedidoMB.cliente}" 
                                          required="true"
                                          label="Cliente"
+                                         span="10"
                                          >
                             <f:selectItem itemLabel="Selecione um cliente" />
                             <f:selectItems value="#{pedidoMB.clientes}"
@@ -30,8 +45,9 @@
                                          value="#{pedidoMB.condicaoPagamento}" 
                                          required="true"
                                          label="Condição de Pagamento"
+                                         span="2"
                                          >
-                            <f:selectItem itemLabel="Selecione a condição de pagamento" />
+                            <f:selectItem itemLabel="Condição de pagamento" />
                             <f:selectItems value="#{pedidoMB.condicoes}"
                                            var="condicao" 
                                            itemLabel="#{condicao.condicao}"
@@ -43,6 +59,7 @@
                                          value="#{pedidoMB.transportadora}" 
                                          required="true"
                                          label="Transportadora"
+                                         span="4"
                                          >
                             <f:selectItem itemLabel="Selecione uma Transportadora" />
                             <f:selectItems value="#{pedidoMB.transportadoras}"
@@ -53,15 +70,44 @@
                         </b:selectOneMenu>
 
 
-                        <b:inputText value="#{pedidoMB.pedido.numeroOrdemCompra}" label="Numero da Ordem de Compra" size="30" required="false" />
+                        <b:inputText span="2" value="#{pedidoMB.pedido.numeroOrdemCompra}" label="Numero da Ordem de Compra" size="30" required="false" />
                         <b:message for="@previous" />
-                        <b:inputText value="#{pedidoMB.pedido.observacoes}" label="Observações" size="100" required="false" />
+                        <b:inputText span="4" value="#{pedidoMB.pedido.observacoes}" label="Observações" size="100" required="false" />
                         <b:message for="@previous" />
 
+
+
+<!--                        <h3>Endereço de Entrega</h3>
+                        <b:selectOneMenu id="estado"
+                                         value="#{pedidoMB.estado}" 
+                                         required="true"
+                                         label="Estado"
+                                         span="2"
+                                         >
+                            <f:selectItem itemLabel="Estado" />
+                            <f:selectItems value="#{pedidoMB.estados}"
+                                           var="estado" 
+                                           itemLabel="#{estado.nome}"
+                                           itemValue="#{estado}"
+                                           />
+                        </b:selectOneMenu>
+                        <b:inputText span="2" value="#{pedidoMB.endereco.cidade}" label="Cidade" size="30" required="false" />
+                        <b:message for="@previous" />
+                        <b:inputText span="2" value="#{pedidoMB.endereco.logradouro}" label="Logradouro" size="30" required="false" />
+                        <b:message for="@previous" />
+                        <b:inputText span="2" value="#{pedidoMB.endereco.bairro}" label="Bairro" size="30" required="false" />
+                        <b:message for="@previous" />
+                        <b:inputText span="2" value="#{pedidoMB.endereco.cep}" label="CEP" size="30" required="false" />
+                        <b:message for="@previous" />
+                        <b:inputText span="2" value="#{pedidoMB.endereco.complemento}" label="Complemento" size="30" required="false" />
+                        <b:message for="@previous" />-->
 
 
 
                         <h3>Itens da Vendas</h3>
+                        
+                        
+
                         <b:dataTable  columnVisibility="false"
                                       value=""
                                       var="pedido"

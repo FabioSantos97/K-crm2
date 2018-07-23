@@ -2,11 +2,15 @@ package br.com.kadesh.mb;
 
 import br.com.kadesh.dao.impl.ClienteDao;
 import br.com.kadesh.dao.impl.CondPagDao;
+import br.com.kadesh.dao.impl.EnderecoDao;
+import br.com.kadesh.dao.impl.EstadoDao;
 import br.com.kadesh.dao.impl.PedidoDao;
 import br.com.kadesh.dao.impl.TipoPedidoDao;
 import br.com.kadesh.dao.impl.TransportadoraDao;
 import br.com.kadesh.model.Cliente;
 import br.com.kadesh.model.CondicaoPagamento;
+import br.com.kadesh.model.Endereco;
+import br.com.kadesh.model.Estado;
 import br.com.kadesh.model.Pedido;
 import br.com.kadesh.model.TipoPedido;
 import br.com.kadesh.model.Transportadora;
@@ -24,21 +28,27 @@ public class PedidoMB implements Serializable {
     private CondPagDao condPagDao = new CondPagDao();
     private TransportadoraDao transportadoraDao = new TransportadoraDao();
     private TipoPedidoDao tipoPedidoDao = new TipoPedidoDao();
+    private EnderecoDao enderecoDao = new EnderecoDao();
+    private EstadoDao estadoDao = new EstadoDao();
 
     private List<TipoPedido> tipoPedidos;
     private List<Transportadora> transportadoras;
     private List<CondicaoPagamento> condicoes;
     private List<Pedido> pedidos;
     private List<Cliente> clientes;
+    private List<Estado> estados;
     private Pedido pedido;
     private Cliente cliente;
     private CondicaoPagamento condicaoPagamento;
     private Transportadora transportadora;
     private TipoPedido tipoPedido;
+    private Endereco endereco;
+    private Estado estado;
 
     public PedidoMB() {
         selectAll();
         pedido = new Pedido();
+        endereco = new Endereco();
     }
 
     public void selectAll() {
@@ -47,15 +57,21 @@ public class PedidoMB implements Serializable {
         condicoes = condPagDao.findAll();
         transportadoras = transportadoraDao.findAll();
         tipoPedidos = tipoPedidoDao.findAll();
+        estados = estadoDao.findAll();
     }
-    
-    
-    public void salvar(){
-        
-        
+
+    public void salvar() {
+        pedido.setTipoPedido(tipoPedido);
+        pedido.setCliente(cliente);
+        pedido.setCondicaoPagamento(condicaoPagamento);
+        pedido.setTransportadora(transportadora);
         
         pedidoDao.create(pedido);
     }
+
+    
+    
+    
     
     
     public TransportadoraDao getTransportadoraDao() {
@@ -176,6 +192,46 @@ public class PedidoMB implements Serializable {
 
     public void setTipoPedido(TipoPedido tipoPedido) {
         this.tipoPedido = tipoPedido;
+    }
+
+    public EnderecoDao getEnderecoDao() {
+        return enderecoDao;
+    }
+
+    public void setEnderecoDao(EnderecoDao enderecoDao) {
+        this.enderecoDao = enderecoDao;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<Estado> getEstados() {
+        return estados;
+    }
+
+    public void setEstados(List<Estado> estados) {
+        this.estados = estados;
+    }
+
+    public EstadoDao getEstadoDao() {
+        return estadoDao;
+    }
+
+    public void setEstadoDao(EstadoDao estadoDao) {
+        this.estadoDao = estadoDao;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
 }

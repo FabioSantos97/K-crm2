@@ -1,6 +1,7 @@
 package br.com.kadesh.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Pedido implements Serializable {
@@ -17,7 +19,7 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     @OneToOne
     private Cliente cliente;
     @OneToOne
@@ -28,22 +30,24 @@ public class Pedido implements Serializable {
     private CondicaoPagamento condicaoPagamento;
     @OneToOne
     private TipoPedido tipoPedido;
-    
+
     private String numeroOrdemCompra;
     private String observacoes;
     private String situacao;
-    
-    double valorTotal;
-    int quantidade;
-    
+
+    private double valorTotal;
+    private int quantidade;
+
+    @Temporal(TemporalType.DATE)
+    private Date dataCriacao;
+
     @OneToMany
     private List<ItemPedido> itensPedido;
 
     public Pedido() {
     }
-    
-    
-    public Pedido(int id, Cliente cliente, Transportadora transportadora, Endereco enderecoEntrega, CondicaoPagamento condicaoPagamento, TipoPedido tipoPedido, String numeroOrdemCompra, String observacoes, String situacao, List<ItemPedido> itensPedido) {
+
+    public Pedido(int id, Cliente cliente, Transportadora transportadora, Endereco enderecoEntrega, CondicaoPagamento condicaoPagamento, TipoPedido tipoPedido, String numeroOrdemCompra, String observacoes, String situacao, double valorTotal, int quantidade, Date dataCriacao, List<ItemPedido> itensPedido) {
         this.id = id;
         this.cliente = cliente;
         this.transportadora = transportadora;
@@ -53,6 +57,9 @@ public class Pedido implements Serializable {
         this.numeroOrdemCompra = numeroOrdemCompra;
         this.observacoes = observacoes;
         this.situacao = situacao;
+        this.valorTotal = valorTotal;
+        this.quantidade = quantidade;
+        this.dataCriacao = dataCriacao;
         this.itensPedido = itensPedido;
     }
 
@@ -140,7 +147,29 @@ public class Pedido implements Serializable {
     public String toString() {
         return this.cliente.getCnpj();
     }
-    
-    
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
 
 }

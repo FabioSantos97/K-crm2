@@ -12,12 +12,21 @@
 
             <b:jumbotron> 
                 <h:panelGroup>
+                    <b:form>
+                        <b:dateTimePicker value=""
+                                          show-time="false"
+                                          label="De:"
+                                          />
+                    </b:form>
+                    <b:form>
+                        <b:dateTimePicker value=""
+                                          show-time="false"
+                                          label="Até:"
+                                          />
+                    </b:form>
                     <h:form>
                         <b:dataTable  excel="true"
-                                      csv="true"
-                                      pdf="true"
                                       columnVisibility="true"
-                                      copy="true"
                                       print="true"
                                       value="#{pedidoMB.pedidos}"
                                       var="pedido"
@@ -26,12 +35,12 @@
                                       >
 
                             <b:dataTableColumn value="#{pedido.cliente.razaoSocial}" label="Cliente" />
+                            <b:dataTableColumn value="#{pedido.tipoPedido.nome}" label="Tipo" />
+                            <b:dataTableColumn value="#{pedido.dataCriacao}" label="Data da Criação" />
+                            <b:dataTableColumn value="#{pedido.transportadora.nomeFantasia}" label="Transportadora" />
+                            <b:dataTableColumn value="#{pedido.condicaoPagamento.condicao}" label="Pagamento" />
                             <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
-                            <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
-                            <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
-                            <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
-                            <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
-                            <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
+
 
                         </b:dataTable>
                     </h:form>
