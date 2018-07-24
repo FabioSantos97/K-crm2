@@ -5,13 +5,18 @@ import br.com.kadesh.dao.impl.CondPagDao;
 import br.com.kadesh.dao.impl.EnderecoDao;
 import br.com.kadesh.dao.impl.EstadoDao;
 import br.com.kadesh.dao.impl.PedidoDao;
+import br.com.kadesh.dao.impl.ProdutoDao;
+import br.com.kadesh.dao.impl.ProdutoGradeDao;
 import br.com.kadesh.dao.impl.TipoPedidoDao;
 import br.com.kadesh.dao.impl.TransportadoraDao;
 import br.com.kadesh.model.Cliente;
 import br.com.kadesh.model.CondicaoPagamento;
 import br.com.kadesh.model.Endereco;
 import br.com.kadesh.model.Estado;
+import br.com.kadesh.model.ItemPedido;
 import br.com.kadesh.model.Pedido;
+import br.com.kadesh.model.Produto;
+import br.com.kadesh.model.ProdutoGrade;
 import br.com.kadesh.model.TipoPedido;
 import br.com.kadesh.model.Transportadora;
 import java.io.Serializable;
@@ -30,6 +35,8 @@ public class PedidoMB implements Serializable {
     private TipoPedidoDao tipoPedidoDao = new TipoPedidoDao();
     private EnderecoDao enderecoDao = new EnderecoDao();
     private EstadoDao estadoDao = new EstadoDao();
+    private ProdutoGradeDao produtoGradeDao = new ProdutoGradeDao();
+    private ProdutoDao produtoDao = new ProdutoDao();
 
     private List<TipoPedido> tipoPedidos;
     private List<Transportadora> transportadoras;
@@ -37,6 +44,12 @@ public class PedidoMB implements Serializable {
     private List<Pedido> pedidos;
     private List<Cliente> clientes;
     private List<Estado> estados;
+    private List<Produto> produtos;
+    private List<ItemPedido> itens;
+    private List<ProdutoGrade> produtosGrade;
+    private List<ProdutoGrade> gradeNumeracao;
+    private List<ProdutoGrade> gradeSelecionada;
+
     private Pedido pedido;
     private Cliente cliente;
     private CondicaoPagamento condicaoPagamento;
@@ -44,6 +57,9 @@ public class PedidoMB implements Serializable {
     private TipoPedido tipoPedido;
     private Endereco endereco;
     private Estado estado;
+    private Produto produto;
+    private ProdutoGrade produtoGrade;
+    private ItemPedido itemPedido;
 
     public PedidoMB() {
         selectAll();
@@ -58,6 +74,31 @@ public class PedidoMB implements Serializable {
         transportadoras = transportadoraDao.findAll();
         tipoPedidos = tipoPedidoDao.findAll();
         estados = estadoDao.findAll();
+
+        produtos = produtoDao.findAll();
+        produtosGrade = produtoGradeDao.findAll();
+
+        for (ProdutoGrade pg : produtosGrade) {
+            if (pg.getProduto().equals(produto)) {
+                gradeNumeracao.add(pg);
+            }
+        }
+    }
+
+    public void adcionarItem() {
+
+    }
+
+    public void carregarProdutos() {
+        produtos = produtoDao.findAll();
+        produtosGrade = produtoGradeDao.findAll();
+
+        for (ProdutoGrade pg : produtosGrade) {
+            if (pg.getProduto() == produto) {
+                gradeNumeracao.add(pg);
+            }
+        }
+
     }
 
     public void salvar() {
@@ -65,15 +106,10 @@ public class PedidoMB implements Serializable {
         pedido.setCliente(cliente);
         pedido.setCondicaoPagamento(condicaoPagamento);
         pedido.setTransportadora(transportadora);
-        
+
         pedidoDao.create(pedido);
     }
 
-    
-    
-    
-    
-    
     public TransportadoraDao getTransportadoraDao() {
         return transportadoraDao;
     }
@@ -232,6 +268,86 @@ public class PedidoMB implements Serializable {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public ProdutoGradeDao getProdutoGradeDao() {
+        return produtoGradeDao;
+    }
+
+    public void setProdutoGradeDao(ProdutoGradeDao produtoGradeDao) {
+        this.produtoGradeDao = produtoGradeDao;
+    }
+
+    public ProdutoDao getProdutoDao() {
+        return produtoDao;
+    }
+
+    public void setProdutoDao(ProdutoDao produtoDao) {
+        this.produtoDao = produtoDao;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
+
+    public List<ProdutoGrade> getProdutosGrade() {
+        return produtosGrade;
+    }
+
+    public void setProdutosGrade(List<ProdutoGrade> produtosGrade) {
+        this.produtosGrade = produtosGrade;
+    }
+
+    public List<ProdutoGrade> getGradeSelecionada() {
+        return gradeSelecionada;
+    }
+
+    public void setGradeSelecionada(List<ProdutoGrade> gradeSelecionada) {
+        this.gradeSelecionada = gradeSelecionada;
+    }
+
+    public ProdutoGrade getProdutoGrade() {
+        return produtoGrade;
+    }
+
+    public void setProdutoGrade(ProdutoGrade produtoGrade) {
+        this.produtoGrade = produtoGrade;
+    }
+
+    public ItemPedido getItemPedido() {
+        return itemPedido;
+    }
+
+    public void setItemPedido(ItemPedido itemPedido) {
+        this.itemPedido = itemPedido;
+    }
+
+    public List<ProdutoGrade> getGradeNumeracao() {
+        return gradeNumeracao;
+    }
+
+    public void setGradeNumeracao(List<ProdutoGrade> gradeNumeracao) {
+        this.gradeNumeracao = gradeNumeracao;
     }
 
 }

@@ -20,12 +20,12 @@
                                          select2="true"
                                          >
                             <f:selectItem itemLabel="Tipo de Pedido" />
-                           
+
                             <f:selectItems value="#{pedidoMB.tipoPedidos}"
                                            var="tipo" 
                                            itemLabel="#{tipo.nome}"
                                            itemValue="#{tipo}"
-                                           
+
 
                                            />
                         </b:selectOneMenu>
@@ -112,8 +112,52 @@
 
                         <div>
                             <h3>Itens da Vendas</h3>
-                            
 
+
+                            <!--                            <b:button onclick="$('.responsiveModalPseudoClass').modal('show')" value="Adicionar Item"/>
+                                                        <b:modal title="Item" styleClass="responsiveModalPseudoClass"
+                                                                 closable="true"
+                                                                 closeOnEscape="false">-->
+                            <b:form>
+                                <b:selectOneMenu id="produto"
+                                                 value="#{pedidoMB.produto}" 
+                                                 required="true"
+                                                 label="Referencia"
+                                                 span="2"
+                                                 select2="true"
+                                                 >
+                                    <f:selectItem itemLabel="Produto" />
+                                    <f:selectItems value="#{pedidoMB.produtos}"
+                                                   var="produto" 
+                                                   itemLabel="#{produto.referencia}"
+                                                   itemValue="#{produto}"
+                                                   />
+                                    <f:ajax event="change" render="nomeProduto"/>
+                                    <f:ajax event="change" render="numeracao"/>
+                                </b:selectOneMenu>
+
+                                <b:inputText id="nomeProduto" readonly="true" value="#{pedidoMB.produto.descricao}" label="Produto" size="30" span="5" />
+
+                                <b:selectOneMenu id="numeracao"
+                                                 value="#{pedidoMB.produtoGrade}" 
+                                                 required="true"
+                                                 label="Numeração"
+                                                 span="2"
+                                                 >
+                                    <f:selectItem itemLabel="Numero" />
+                                    <f:selectItems value="#{pedidoMB.gradeNumeracao}"
+                                                   var="numero" 
+                                                   itemLabel="#{numero.numeracao}"
+                                                   itemValue="#{numero}"
+                                                   />
+                                    
+                                </b:selectOneMenu>
+
+                                <b:inputText id="quantidade"  value="#{pedidoMB.itemPedido.quantidade}" label="Quantidade" size="2" span="1" />
+
+
+                            </b:form>
+                            <!--</b:modal>-->
 
                             <b:dataTable  columnVisibility="false"
                                           value=""

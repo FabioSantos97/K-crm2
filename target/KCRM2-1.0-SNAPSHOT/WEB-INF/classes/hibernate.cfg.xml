@@ -33,6 +33,7 @@
         <mapping class="br.com.kadesh.model.TipoPedido"/>
         <mapping class="br.com.kadesh.model.TipoRelacionamento"/>
         <mapping class="br.com.kadesh.model.Transportadora"/>
+        <mapping class="br.com.kadesh.model.Opcional"/>
 
     
     
