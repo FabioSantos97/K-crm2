@@ -6,6 +6,7 @@ br\com\kadesh\dao\impl\PedidoDao.class
 br\com\kadesh\model\Estado.class
 br\com\kadesh\model\Endereco.class
 br\com\kadesh\dao\impl\CondPagDao.class
+br\com\kadesh\dao\impl\EstadoDao.class
 br\com\kadesh\model\CondicaoPagamento.class
 br\com\kadesh\util\HibernateSession.class
 br\com\kadesh\util\HibernateFactory.class
@@ -16,6 +17,7 @@ br\com\kadesh\model\Transportadora.class
 br\com\kadesh\model\Pedido.class
 br\com\kadesh\model\TipoPedido.class
 br\com\kadesh\dao\impl\AbstractDao.class
+br\com\kadesh\dao\impl\EnderecoDao.class
 br\com\kadesh\util\GerarTabelas.class
 br\com\kadesh\dao\interfaces\IGenericDAO.class
 br\com\kadesh\model\ItemPedido.class

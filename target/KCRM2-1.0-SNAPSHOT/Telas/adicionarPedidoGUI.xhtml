@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<html xmlns="http://www.w3.org/1999/xhtml"      xmlns:h="http://xmlns.jcp.org/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
@@ -16,12 +17,15 @@
                                          required="true"
                                          label="Tipo"
                                          span="2"
+                                         select2="true"
                                          >
                             <f:selectItem itemLabel="Tipo de Pedido" />
+                           
                             <f:selectItems value="#{pedidoMB.tipoPedidos}"
                                            var="tipo" 
                                            itemLabel="#{tipo.nome}"
                                            itemValue="#{tipo}"
+                                           
 
                                            />
                         </b:selectOneMenu>
@@ -31,6 +35,7 @@
                                          required="true"
                                          label="Cliente"
                                          span="10"
+                                         select2="true"
                                          >
                             <f:selectItem itemLabel="Selecione um cliente" />
                             <f:selectItems value="#{pedidoMB.clientes}"
@@ -76,52 +81,55 @@
                         <b:message for="@previous" />
 
 
+                        <div>
+                            <h3>Endereço de Entrega</h3>
+                            <b:selectOneMenu id="estado"
+                                             value="#{pedidoMB.estado}" 
+                                             required="true"
+                                             label="Estado"
+                                             span="2"
+                                             select2="true"
+                                             >
+                                <f:selectItem itemLabel="Estado" />
+                                <f:selectItems value="#{pedidoMB.estados}"
+                                               var="estado" 
+                                               itemLabel="#{estado.nome}"
+                                               itemValue="#{estado}"
+                                               />
+                            </b:selectOneMenu>
+                            <b:inputText span="2" value="#{pedidoMB.endereco.cidade}" label="Cidade" size="30" required="false" />
+                            <b:message for="@previous" />
+                            <b:inputText span="2" value="#{pedidoMB.endereco.logradouro}" label="Logradouro" size="30" required="false" />
+                            <b:message for="@previous" />
+                            <b:inputText span="2" value="#{pedidoMB.endereco.bairro}" label="Bairro" size="30" required="false" />
+                            <b:message for="@previous" />
+                            <b:inputText span="2" value="#{pedidoMB.endereco.cep}" label="CEP" size="30" required="false" />
+                            <b:message for="@previous" />
+                            <b:inputText span="2" value="#{pedidoMB.endereco.complemento}" label="Complemento" size="30" required="false" />
+                            <b:message for="@previous" />
 
-<!--                        <h3>Endereço de Entrega</h3>
-                        <b:selectOneMenu id="estado"
-                                         value="#{pedidoMB.estado}" 
-                                         required="true"
-                                         label="Estado"
-                                         span="2"
-                                         >
-                            <f:selectItem itemLabel="Estado" />
-                            <f:selectItems value="#{pedidoMB.estados}"
-                                           var="estado" 
-                                           itemLabel="#{estado.nome}"
-                                           itemValue="#{estado}"
-                                           />
-                        </b:selectOneMenu>
-                        <b:inputText span="2" value="#{pedidoMB.endereco.cidade}" label="Cidade" size="30" required="false" />
-                        <b:message for="@previous" />
-                        <b:inputText span="2" value="#{pedidoMB.endereco.logradouro}" label="Logradouro" size="30" required="false" />
-                        <b:message for="@previous" />
-                        <b:inputText span="2" value="#{pedidoMB.endereco.bairro}" label="Bairro" size="30" required="false" />
-                        <b:message for="@previous" />
-                        <b:inputText span="2" value="#{pedidoMB.endereco.cep}" label="CEP" size="30" required="false" />
-                        <b:message for="@previous" />
-                        <b:inputText span="2" value="#{pedidoMB.endereco.complemento}" label="Complemento" size="30" required="false" />
-                        <b:message for="@previous" />-->
+                        </div>
 
-
-
-                        <h3>Itens da Vendas</h3>
-                        
-                        
-
-                        <b:dataTable  columnVisibility="false"
-                                      value=""
-                                      var="pedido"
-                                      select="true"
-                                      selectionMode="single"
-                                      searching ="false"
-                                      paginated="false"
-                                      info="false"
-                                      >
-
-                            <b:dataTableColumn value="" label="Item" />
+                        <div>
+                            <h3>Itens da Vendas</h3>
+                            
 
 
-                        </b:dataTable>
+                            <b:dataTable  columnVisibility="false"
+                                          value=""
+                                          var="pedido"
+                                          select="true"
+                                          selectionMode="single"
+                                          searching ="false"
+                                          paginated="false"
+                                          info="false"
+                                          >
+
+                                <b:dataTableColumn value="" label="Item" />
+
+
+                            </b:dataTable>
+                        </div>
                         <b:commandButton look="primary" value="Salvar" action="#{pedidoMB.salvar()}" icon-awesome="save" />
                     </b:form>
 
