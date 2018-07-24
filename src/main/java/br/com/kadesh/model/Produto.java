@@ -1,19 +1,21 @@
 package br.com.kadesh.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Produto implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     private String descricao;
     private String referencia;
     private String numeroCa;
@@ -22,15 +24,20 @@ public class Produto implements Serializable {
     private boolean status;
     @OneToOne
     private Grupo grupo;
+
     @OneToOne
     private Familia familia;
+
     @OneToOne
     private Linha linha;
+
+    @OneToMany
+    private List<ProdutoGrade> grade;
 
     public Produto() {
     }
 
-    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, Grupo grupo, Familia familia, Linha linha) {
+    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, Grupo grupo, Familia familia, Linha linha, List<ProdutoGrade> grade) {
         this.id = id;
         this.descricao = descricao;
         this.referencia = referencia;
@@ -41,10 +48,9 @@ public class Produto implements Serializable {
         this.grupo = grupo;
         this.familia = familia;
         this.linha = linha;
+        this.grade = grade;
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -124,6 +130,13 @@ public class Produto implements Serializable {
     public void setLinha(Linha linha) {
         this.linha = linha;
     }
-    
-    
+
+    public List<ProdutoGrade> getGrade() {
+        return grade;
+    }
+
+    public void setGrade(List<ProdutoGrade> grade) {
+        this.grade = grade;
+    }
+
 }

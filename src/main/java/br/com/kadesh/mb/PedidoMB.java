@@ -35,7 +35,6 @@ public class PedidoMB implements Serializable {
     private TipoPedidoDao tipoPedidoDao = new TipoPedidoDao();
     private EnderecoDao enderecoDao = new EnderecoDao();
     private EstadoDao estadoDao = new EstadoDao();
-    private ProdutoGradeDao produtoGradeDao = new ProdutoGradeDao();
     private ProdutoDao produtoDao = new ProdutoDao();
 
     private List<TipoPedido> tipoPedidos;
@@ -46,9 +45,6 @@ public class PedidoMB implements Serializable {
     private List<Estado> estados;
     private List<Produto> produtos;
     private List<ItemPedido> itens;
-    private List<ProdutoGrade> produtosGrade;
-    private List<ProdutoGrade> gradeNumeracao;
-    private List<ProdutoGrade> gradeSelecionada;
 
     private Pedido pedido;
     private Cliente cliente;
@@ -76,13 +72,7 @@ public class PedidoMB implements Serializable {
         estados = estadoDao.findAll();
 
         produtos = produtoDao.findAll();
-        produtosGrade = produtoGradeDao.findAll();
-
-        for (ProdutoGrade pg : produtosGrade) {
-            if (pg.getProduto().equals(produto)) {
-                gradeNumeracao.add(pg);
-            }
-        }
+        
     }
 
     public void adcionarItem() {
@@ -91,13 +81,7 @@ public class PedidoMB implements Serializable {
 
     public void carregarProdutos() {
         produtos = produtoDao.findAll();
-        produtosGrade = produtoGradeDao.findAll();
-
-        for (ProdutoGrade pg : produtosGrade) {
-            if (pg.getProduto() == produto) {
-                gradeNumeracao.add(pg);
-            }
-        }
+       
 
     }
 
@@ -270,13 +254,7 @@ public class PedidoMB implements Serializable {
         this.estado = estado;
     }
 
-    public ProdutoGradeDao getProdutoGradeDao() {
-        return produtoGradeDao;
-    }
 
-    public void setProdutoGradeDao(ProdutoGradeDao produtoGradeDao) {
-        this.produtoGradeDao = produtoGradeDao;
-    }
 
     public ProdutoDao getProdutoDao() {
         return produtoDao;
@@ -310,22 +288,7 @@ public class PedidoMB implements Serializable {
         this.itens = itens;
     }
 
-    public List<ProdutoGrade> getProdutosGrade() {
-        return produtosGrade;
-    }
-
-    public void setProdutosGrade(List<ProdutoGrade> produtosGrade) {
-        this.produtosGrade = produtosGrade;
-    }
-
-    public List<ProdutoGrade> getGradeSelecionada() {
-        return gradeSelecionada;
-    }
-
-    public void setGradeSelecionada(List<ProdutoGrade> gradeSelecionada) {
-        this.gradeSelecionada = gradeSelecionada;
-    }
-
+   
     public ProdutoGrade getProdutoGrade() {
         return produtoGrade;
     }
@@ -342,12 +305,5 @@ public class PedidoMB implements Serializable {
         this.itemPedido = itemPedido;
     }
 
-    public List<ProdutoGrade> getGradeNumeracao() {
-        return gradeNumeracao;
-    }
-
-    public void setGradeNumeracao(List<ProdutoGrade> gradeNumeracao) {
-        this.gradeNumeracao = gradeNumeracao;
-    }
 
 }
