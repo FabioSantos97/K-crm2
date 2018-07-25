@@ -51,4 +51,11 @@ public class ProdutoGrade implements Serializable {
         this.numeracao = numeracao;
     }
 
+    @Override
+    public String toString() {
+        return produto.getDescricao() + " " + numeracao ;
+    }
+    
+    
+
 }

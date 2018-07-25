@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class ItemPedido implements Serializable {
@@ -15,31 +16,33 @@ public class ItemPedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @OneToMany
+    private List<GradeVenda> produtos;
     
-    @OneToOne
-    private ProdutoGrade produto;
     private int quantidade;
     private double preco;
     private double frete;
     private double icms;
     private double pisCofins;
     private double cprb;
-    
+
     @OneToMany
-    List<Opcional> opcionais;
+    private List<Opcional> opcionais;
 
     public ItemPedido() {
     }
 
-    public ItemPedido(int id, ProdutoGrade produto, int quantidade, double preco, double frete, double icms, double pisCofins, double cprb) {
+    public ItemPedido(int id, List<GradeVenda> produtos, int quantidade, double preco, double frete, double icms, double pisCofins, double cprb, List<Opcional> opcionais) {
         this.id = id;
-        this.produto = produto;
+        this.produtos = produtos;
         this.quantidade = quantidade;
         this.preco = preco;
         this.frete = frete;
         this.icms = icms;
         this.pisCofins = pisCofins;
         this.cprb = cprb;
+        this.opcionais = opcionais;
     }
 
     public double getCprb() {
@@ -56,14 +59,6 @@ public class ItemPedido implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public ProdutoGrade getProduto() {
-        return produto;
-    }
-
-    public void setProduto(ProdutoGrade produto) {
-        this.produto = produto;
     }
 
     public int getQuantidade() {
@@ -104,6 +99,22 @@ public class ItemPedido implements Serializable {
 
     public void setPisCofins(double pisCofins) {
         this.pisCofins = pisCofins;
+    }
+
+    public List<Opcional> getOpcionais() {
+        return opcionais;
+    }
+
+    public void setOpcionais(List<Opcional> opcionais) {
+        this.opcionais = opcionais;
+    }
+
+    public List<GradeVenda> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<GradeVenda> produtos) {
+        this.produtos = produtos;
     }
 
 }

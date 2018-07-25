@@ -13,6 +13,7 @@ import br.com.kadesh.model.Cliente;
 import br.com.kadesh.model.CondicaoPagamento;
 import br.com.kadesh.model.Endereco;
 import br.com.kadesh.model.Estado;
+import br.com.kadesh.model.GradeVenda;
 import br.com.kadesh.model.ItemPedido;
 import br.com.kadesh.model.Pedido;
 import br.com.kadesh.model.Produto;
@@ -20,12 +21,15 @@ import br.com.kadesh.model.ProdutoGrade;
 import br.com.kadesh.model.TipoPedido;
 import br.com.kadesh.model.Transportadora;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class PedidoMB implements Serializable {
 
     private PedidoDao pedidoDao = new PedidoDao();
@@ -36,6 +40,7 @@ public class PedidoMB implements Serializable {
     private EnderecoDao enderecoDao = new EnderecoDao();
     private EstadoDao estadoDao = new EstadoDao();
     private ProdutoDao produtoDao = new ProdutoDao();
+    private ProdutoGradeDao produtoGradeDao = new ProdutoGradeDao();
 
     private List<TipoPedido> tipoPedidos;
     private List<Transportadora> transportadoras;
@@ -45,6 +50,8 @@ public class PedidoMB implements Serializable {
     private List<Estado> estados;
     private List<Produto> produtos;
     private List<ItemPedido> itens;
+    private List<GradeVenda> gradeVendas = new ArrayList<>();
+    private List<ProdutoGrade> produtosGrade;
 
     private Pedido pedido;
     private Cliente cliente;
@@ -56,11 +63,15 @@ public class PedidoMB implements Serializable {
     private Produto produto;
     private ProdutoGrade produtoGrade;
     private ItemPedido itemPedido;
+    private GradeVenda gradeVenda;
 
     public PedidoMB() {
         selectAll();
         pedido = new Pedido();
         endereco = new Endereco();
+        produtoGrade = new ProdutoGrade();
+        itemPedido = new ItemPedido();
+        gradeVenda = new GradeVenda();
     }
 
     public void selectAll() {
@@ -72,16 +83,22 @@ public class PedidoMB implements Serializable {
         estados = estadoDao.findAll();
 
         produtos = produtoDao.findAll();
-        
+        produtosGrade = produtoGradeDao.findAll();
+
     }
 
     public void adcionarItem() {
 
     }
 
+    public void adicionarGrade() {
+        gradeVenda.setGrade(produtoGrade);
+
+        gradeVendas.add(gradeVenda);
+    }
+
     public void carregarProdutos() {
         produtos = produtoDao.findAll();
-       
 
     }
 
@@ -254,8 +271,6 @@ public class PedidoMB implements Serializable {
         this.estado = estado;
     }
 
-
-
     public ProdutoDao getProdutoDao() {
         return produtoDao;
     }
@@ -288,7 +303,6 @@ public class PedidoMB implements Serializable {
         this.itens = itens;
     }
 
-   
     public ProdutoGrade getProdutoGrade() {
         return produtoGrade;
     }
@@ -305,5 +319,36 @@ public class PedidoMB implements Serializable {
         this.itemPedido = itemPedido;
     }
 
+    public List<GradeVenda> getGradeVendas() {
+        return gradeVendas;
+    }
+
+    public void setGradeVendas(List<GradeVenda> gradeVendas) {
+        this.gradeVendas = gradeVendas;
+    }
+
+    public GradeVenda getGradeVenda() {
+        return gradeVenda;
+    }
+
+    public void setGradeVenda(GradeVenda gradeVenda) {
+        this.gradeVenda = gradeVenda;
+    }
+
+    public ProdutoGradeDao getProdutoGradeDao() {
+        return produtoGradeDao;
+    }
+
+    public void setProdutoGradeDao(ProdutoGradeDao produtoGradeDao) {
+        this.produtoGradeDao = produtoGradeDao;
+    }
+
+    public List<ProdutoGrade> getProdutosGrade() {
+        return produtosGrade;
+    }
+
+    public void setProdutosGrade(List<ProdutoGrade> produtosGrade) {
+        this.produtosGrade = produtosGrade;
+    }
 
 }

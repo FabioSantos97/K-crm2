@@ -2,6 +2,7 @@ package br.com.kadesh.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,22 +23,19 @@ public class Produto implements Serializable {
     private double custo;
     private double mcMinima;
     private boolean status;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Grupo grupo;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Familia familia;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Linha linha;
-
-    @OneToMany
-    private List<ProdutoGrade> grade;
 
     public Produto() {
     }
 
-    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, Grupo grupo, Familia familia, Linha linha, List<ProdutoGrade> grade) {
+    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, Grupo grupo, Familia familia, Linha linha) {
         this.id = id;
         this.descricao = descricao;
         this.referencia = referencia;
@@ -48,7 +46,6 @@ public class Produto implements Serializable {
         this.grupo = grupo;
         this.familia = familia;
         this.linha = linha;
-        this.grade = grade;
     }
 
     public int getId() {
@@ -129,14 +126,6 @@ public class Produto implements Serializable {
 
     public void setLinha(Linha linha) {
         this.linha = linha;
-    }
-
-    public List<ProdutoGrade> getGrade() {
-        return grade;
-    }
-
-    public void setGrade(List<ProdutoGrade> grade) {
-        this.grade = grade;
     }
 
 }
