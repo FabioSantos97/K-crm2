@@ -87,14 +87,17 @@ public class PedidoMB implements Serializable {
 
     }
 
-    public void adcionarItem() {
-
-    }
-
     public void adicionarGrade() {
         gradeVenda.setGrade(produtoGrade);
 
         gradeVendas.add(gradeVenda);
+
+        gradeVenda = new GradeVenda();
+    }
+
+    public void adicionarItem() {
+        itemPedido.setProdutos(gradeVendas);
+
     }
 
     public void carregarProdutos() {
