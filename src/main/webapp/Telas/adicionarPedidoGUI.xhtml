@@ -32,7 +32,7 @@
 
                                                    />
                                 </b:selectOneMenu>
-                                <b:message for="@previous"/>
+
 
 
                                 <b:selectOneMenu id="cliente"
@@ -50,43 +50,60 @@
 
                                                    />
                                 </b:selectOneMenu>
-                                <b:message for="@previous" />
+
                             </b:row>
-                            <b:selectOneMenu id="condpag"
-                                             value="#{pedidoMB.condicaoPagamento}" 
-                                             required="true"
-                                             label="Condição de Pagamento"
-                                             span="2"
-                                             >
-                                <f:selectItem itemLabel="Condição de pagamento" />
-                                <f:selectItems value="#{pedidoMB.condicoes}"
-                                               var="condicao" 
-                                               itemLabel="#{condicao.condicao}"
-                                               itemValue="#{condicao}"
-                                               />
-                            </b:selectOneMenu>
-                            <b:message for="@previous" />
-
-                            <b:selectOneMenu id="transportadora"
-                                             value="#{pedidoMB.transportadora}" 
-                                             required="true"
-                                             label="Transportadora"
-                                             span="4"
-                                             >
-                                <f:selectItem itemLabel="Selecione uma Transportadora" />
-                                <f:selectItems value="#{pedidoMB.transportadoras}"
-                                               var="transportadora" 
-                                               itemLabel="#{transportadora.nomeFantasia}"
-                                               itemValue="#{transportadora}"
-                                               />
-                            </b:selectOneMenu>
-                            <b:message for="@previous" />
+                            <b:row>
+                                <b:column span="2">
+                                    <b:message for="tipoPedido"/>
+                                </b:column>
+                                <b:column span="6">
+                                    <b:message for="cliente"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:selectOneMenu id="condpag"
+                                                 value="#{pedidoMB.condicaoPagamento}" 
+                                                 required="true"
+                                                 label="Condição de Pagamento"
+                                                 span="2"
+                                                 >
+                                    <f:selectItem itemLabel="Condição de pagamento" />
+                                    <f:selectItems value="#{pedidoMB.condicoes}"
+                                                   var="condicao" 
+                                                   itemLabel="#{condicao.condicao}"
+                                                   itemValue="#{condicao}"
+                                                   />
+                                </b:selectOneMenu>
 
 
-                            <b:inputText span="2" value="#{pedidoMB.pedido.numeroOrdemCompra}" label="Numero da Ordem de Compra" size="30" required="false" />
-                            <b:message for="@previous" />
-                            <b:inputText span="4" value="#{pedidoMB.pedido.observacoes}" label="Observações" size="100" required="false" />
-                            <b:message for="@previous" />
+                                <b:selectOneMenu id="transportadora"
+                                                 value="#{pedidoMB.transportadora}" 
+                                                 required="true"
+                                                 label="Transportadora"
+                                                 span="4"
+                                                 >
+                                    <f:selectItem itemLabel="Selecione uma Transportadora" />
+                                    <f:selectItems value="#{pedidoMB.transportadoras}"
+                                                   var="transportadora" 
+                                                   itemLabel="#{transportadora.nomeFantasia}"
+                                                   itemValue="#{transportadora}"
+                                                   />
+                                </b:selectOneMenu>
+
+
+
+                                <b:inputText span="2" id="ordemCompra" value="#{pedidoMB.pedido.numeroOrdemCompra}" label="Numero da Ordem de Compra" size="30" required="false" />
+
+                                <b:inputText span="4" id="obs" value="#{pedidoMB.pedido.observacoes}" label="Observações" size="100" required="false" />
+
+                            </b:row>
+                            <b:row>
+                                <b:message for="condpag"/>
+                                <b:message for="transportadora"/>
+                                <b:message for="ordemCompra"/>
+                                <b:message for="obs"/>
+
+                            </b:row>
                         </b:container>
 
 
@@ -210,7 +227,7 @@
 
 
                             </b:form>
-                            <!--</b:modal>-->
+                            <!--                            </b:modal>-->
 
                             <b:dataTable  columnVisibility="false"
                                           value="#{pedidoMB.itens}"

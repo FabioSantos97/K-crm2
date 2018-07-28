@@ -36,7 +36,7 @@ public class GerarTabelas {
         EstadoDao estadoDao = new EstadoDao();
         ProdutoDao produtoDao = new ProdutoDao();
         
-        
+//        
 //        Estado estado = new Estado();
 //        estado.setNome("Parana");
 //        estado.setSigla("Pr");
@@ -159,8 +159,8 @@ public class GerarTabelas {
         pg9.setProduto(produto);
         pg9.setNumeracao(42);
         produtoGradeDao.create(pg9);
-        
-        
+//        
+//        
         
         
         
