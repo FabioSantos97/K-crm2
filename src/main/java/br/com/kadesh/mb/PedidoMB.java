@@ -49,7 +49,7 @@ public class PedidoMB implements Serializable {
     private List<Cliente> clientes;
     private List<Estado> estados;
     private List<Produto> produtos;
-    private List<ItemPedido> itens;
+    private List<ItemPedido> itens = new ArrayList<>();
     private List<GradeVenda> gradeVendas = new ArrayList<>();
     private List<ProdutoGrade> produtosGrade;
 
@@ -97,7 +97,11 @@ public class PedidoMB implements Serializable {
 
     public void adicionarItem() {
         itemPedido.setProdutos(gradeVendas);
-
+        itemPedido.setProduto(produto);
+        itens.add(itemPedido);
+        itemPedido = new ItemPedido();
+        gradeVendas = new ArrayList<>();
+        produto = new Produto();
     }
 
     public void carregarProdutos() {

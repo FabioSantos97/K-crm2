@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class ItemPedido implements Serializable {
 
@@ -19,7 +18,8 @@ public class ItemPedido implements Serializable {
 
     @OneToMany
     private List<GradeVenda> produtos;
-    
+
+    private Produto produto;
     private int quantidade;
     private double preco;
     private double frete;
@@ -33,9 +33,10 @@ public class ItemPedido implements Serializable {
     public ItemPedido() {
     }
 
-    public ItemPedido(int id, List<GradeVenda> produtos, int quantidade, double preco, double frete, double icms, double pisCofins, double cprb, List<Opcional> opcionais) {
+    public ItemPedido(int id, List<GradeVenda> produtos, Produto produto, int quantidade, double preco, double frete, double icms, double pisCofins, double cprb, List<Opcional> opcionais) {
         this.id = id;
         this.produtos = produtos;
+        this.produto = produto;
         this.quantidade = quantidade;
         this.preco = preco;
         this.frete = frete;
@@ -115,6 +116,14 @@ public class ItemPedido implements Serializable {
 
     public void setProdutos(List<GradeVenda> produtos) {
         this.produtos = produtos;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
 }

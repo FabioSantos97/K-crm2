@@ -239,7 +239,9 @@
                                           info="false"
                                           >
 
-                                <b:dataTableColumn value="#{pedidoMB.itemPedido.preco}" label="Item" />
+                                <b:dataTableColumn value="#{itemPedido.produto.descricao}" label="Item" />
+                                
+                                <b:dataTableColumn value="#{itemPedido.preco}" label="Item" />
 
 
                             </b:dataTable>
