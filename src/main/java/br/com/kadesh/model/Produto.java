@@ -23,6 +23,10 @@ public class Produto implements Serializable {
     private double custo;
     private double mcMinima;
     private boolean status;
+    
+    private double precoSugerido;
+    private double precoMinimo;
+    
     @OneToOne(cascade = {CascadeType.ALL})
     private Grupo grupo;
 
@@ -86,6 +90,7 @@ public class Produto implements Serializable {
 
     public void setCusto(double custo) {
         this.custo = custo;
+        setPrecoSugerido(this.custo+(this.custo*0.20));
     }
 
     public double getMcMinima() {
@@ -94,6 +99,7 @@ public class Produto implements Serializable {
 
     public void setMcMinima(double mcMinima) {
         this.mcMinima = mcMinima;
+        setPrecoMinimo(custo+(custo*(this.mcMinima/100)));
     }
 
     public boolean isStatus() {
@@ -127,5 +133,22 @@ public class Produto implements Serializable {
     public void setLinha(Linha linha) {
         this.linha = linha;
     }
+
+    public double getPrecoSugerido() {
+        return precoSugerido;
+    }
+
+    public void setPrecoSugerido(double precoSugerido) {
+        this.precoSugerido = precoSugerido;
+    }
+
+    public double getPrecoMinimo() {
+        return precoMinimo;
+    }
+
+    public void setPrecoMinimo(double precoMinimo) {
+        this.precoMinimo = precoMinimo;
+    }
+    
 
 }

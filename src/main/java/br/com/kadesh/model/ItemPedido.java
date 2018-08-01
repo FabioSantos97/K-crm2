@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ItemPedido implements Serializable {
@@ -19,6 +20,7 @@ public class ItemPedido implements Serializable {
     @OneToMany
     private List<GradeVenda> produtos;
 
+    @OneToOne
     private Produto produto;
     private int quantidade;
     private double preco;

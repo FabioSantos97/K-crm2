@@ -4,6 +4,7 @@ import br.com.kadesh.dao.impl.ClienteDao;
 import br.com.kadesh.dao.impl.CondPagDao;
 import br.com.kadesh.dao.impl.EnderecoDao;
 import br.com.kadesh.dao.impl.EstadoDao;
+import br.com.kadesh.dao.impl.OpcionaisDao;
 import br.com.kadesh.dao.impl.PedidoDao;
 import br.com.kadesh.dao.impl.ProdutoDao;
 import br.com.kadesh.dao.impl.ProdutoGradeDao;
@@ -15,6 +16,7 @@ import br.com.kadesh.model.Endereco;
 import br.com.kadesh.model.Estado;
 import br.com.kadesh.model.GradeVenda;
 import br.com.kadesh.model.ItemPedido;
+import br.com.kadesh.model.Opcional;
 import br.com.kadesh.model.Pedido;
 import br.com.kadesh.model.Produto;
 import br.com.kadesh.model.ProdutoGrade;
@@ -41,6 +43,7 @@ public class PedidoMB implements Serializable {
     private EstadoDao estadoDao = new EstadoDao();
     private ProdutoDao produtoDao = new ProdutoDao();
     private ProdutoGradeDao produtoGradeDao = new ProdutoGradeDao();
+    private OpcionaisDao opcionaisDao = new OpcionaisDao();
 
     private List<TipoPedido> tipoPedidos;
     private List<Transportadora> transportadoras;
@@ -52,6 +55,7 @@ public class PedidoMB implements Serializable {
     private List<ItemPedido> itens = new ArrayList<>();
     private List<GradeVenda> gradeVendas = new ArrayList<>();
     private List<ProdutoGrade> produtosGrade;
+    private List<Opcional> opcionaisDisponiveis;
 
     private Pedido pedido;
     private Cliente cliente;
@@ -64,6 +68,7 @@ public class PedidoMB implements Serializable {
     private ProdutoGrade produtoGrade;
     private ItemPedido itemPedido;
     private GradeVenda gradeVenda;
+    private Opcional opcional;
 
     public PedidoMB() {
         selectAll();
@@ -84,6 +89,7 @@ public class PedidoMB implements Serializable {
 
         produtos = produtoDao.findAll();
         produtosGrade = produtoGradeDao.findAll();
+        opcionaisDisponiveis = opcionaisDao.findAll();
 
     }
 
@@ -96,9 +102,17 @@ public class PedidoMB implements Serializable {
     }
 
     public void adicionarItem() {
+        int quantidade = 0;
         itemPedido.setProdutos(gradeVendas);
         itemPedido.setProduto(produto);
+        for (GradeVenda gv : gradeVendas) {
+
+            quantidade = quantidade + gv.getQuantidade();
+        }
+
+        itemPedido.setQuantidade(quantidade);
         itens.add(itemPedido);
+
         itemPedido = new ItemPedido();
         gradeVendas = new ArrayList<>();
         produto = new Produto();
@@ -109,13 +123,33 @@ public class PedidoMB implements Serializable {
 
     }
 
+    public void carregarEndereco() {
+        endereco = cliente.getEndereco();
+//        estado = cliente.getEndereco().getEstado();
+    }
+
     public void salvar() {
+        System.out.println("Salvo1");
         pedido.setTipoPedido(tipoPedido);
         pedido.setCliente(cliente);
         pedido.setCondicaoPagamento(condicaoPagamento);
         pedido.setTransportadora(transportadora);
+        pedido.setItensPedido(itens);
 
-        pedidoDao.create(pedido);
+        pedidoDao.saveOrUpdate(pedido);
+        System.out.println("Salvo2");
+    }
+
+    public void removerItemGrade(GradeVenda gradeVenda) {
+        gradeVendas.remove(gradeVenda);
+    }
+
+    public void removerItem() {
+
+    }
+
+    public void editarItem() {
+
     }
 
     public TransportadoraDao getTransportadoraDao() {
@@ -356,6 +390,30 @@ public class PedidoMB implements Serializable {
 
     public void setProdutosGrade(List<ProdutoGrade> produtosGrade) {
         this.produtosGrade = produtosGrade;
+    }
+
+    public OpcionaisDao getOpcionaisDao() {
+        return opcionaisDao;
+    }
+
+    public void setOpcionaisDao(OpcionaisDao opcionaisDao) {
+        this.opcionaisDao = opcionaisDao;
+    }
+
+    public List<Opcional> getOpcionaisDisponiveis() {
+        return opcionaisDisponiveis;
+    }
+
+    public void setOpcionaisDisponiveis(List<Opcional> opcionaisDisponiveis) {
+        this.opcionaisDisponiveis = opcionaisDisponiveis;
+    }
+
+    public Opcional getOpcional() {
+        return opcional;
+    }
+
+    public void setOpcional(Opcional opcional) {
+        this.opcional = opcional;
     }
 
 }
