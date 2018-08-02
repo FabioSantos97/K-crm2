@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Endereco implements Serializable {
@@ -17,8 +17,9 @@ public class Endereco implements Serializable {
     private String cep;
     private String cidade;
     
-    @OneToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = CascadeType.ALL)
     private Estado estado;
+    
     private String logradouro;
     private String bairro;
     private String complemento;

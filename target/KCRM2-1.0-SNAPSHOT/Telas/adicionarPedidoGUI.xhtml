@@ -149,7 +149,7 @@
                                                                      closable="true"
                                                                      closeOnEscape="false">-->
                                 <b:form>
-                                    <b:row>
+                                    <b:row style=" ">
                                         <b:selectOneMenu id="produto"
                                                          value="#{pedidoMB.produto}" 
                                                          required="true"
@@ -190,7 +190,7 @@
                                     </b:row>
                                     <b:row>
                                         <b:inputText id="precoSugerido" readonly="true" value="#{pedidoMB.produto.precoSugerido}" label="Preço Sugerido" size="2" span="1" />
-                                        <b:inputText id="precoMinimo" readonly="true" value="#{pedidoMB.produto.precoMinimo}" label="Preço Sugerido" size="2" span="1" />
+                                        <b:inputText id="precoMinimo" readonly="true" value="#{pedidoMB.produto.precoMinimo}" label="Preço Minimo" size="2" span="1" />
 
                                         <b:inputText id="preco"  value="#{pedidoMB.itemPedido.preco}" label="Preço" size="2" span="1" />
                                         <b:inputText id="frete"  value="#{pedidoMB.itemPedido.frete}" label="Valor Frete" size="2" span="1" />

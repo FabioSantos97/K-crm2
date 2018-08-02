@@ -3,7 +3,9 @@ package br.com.kadesh.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,15 +22,15 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     private Cliente cliente;
-    @OneToOne
+    @ManyToOne
     private Transportadora transportadora;
-    @OneToOne
+    @ManyToOne
     private Endereco enderecoEntrega;
-    @OneToOne
+    @ManyToOne
     private CondicaoPagamento condicaoPagamento;
-    @OneToOne
+    @ManyToOne
     private TipoPedido tipoPedido;
 
     private String numeroOrdemCompra;
@@ -41,7 +43,7 @@ public class Pedido implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataCriacao;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ItemPedido> itensPedido;
 
     public Pedido() {

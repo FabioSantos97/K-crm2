@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente implements Serializable {
@@ -16,7 +16,7 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     private String cnpj;
     private String razaoSocial;
     private String nomeFantasia;
@@ -25,10 +25,11 @@ public class Cliente implements Serializable {
     private String ramoAtividade;
     private String segmento;
     private String emailNFE;
-    
+
     @OneToMany
     private List<Contato> contatos;
-    @OneToOne(cascade = {CascadeType.ALL})
+    
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Endereco endereco;
 
     public Cliente() {

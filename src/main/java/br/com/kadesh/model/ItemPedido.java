@@ -2,13 +2,13 @@ package br.com.kadesh.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class ItemPedido implements Serializable {
@@ -17,11 +17,12 @@ public class ItemPedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<GradeVenda> produtos;
 
-    @OneToOne
+    @ManyToOne
     private Produto produto;
+
     private int quantidade;
     private double preco;
     private double frete;
