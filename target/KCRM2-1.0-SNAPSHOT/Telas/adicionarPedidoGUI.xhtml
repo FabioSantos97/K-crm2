@@ -9,10 +9,16 @@
     <ui:composition template="/Template/template.xhtml">
         <ui:define name="content">
 
+            <b:panel>
+                <h3>Adicionar Pedido</h3>
+            </b:panel>
             <b:jumbotron> 
+
                 <h:panelGroup>
                     <b:form   prependId="false">
                         <b:container fluid="true" >
+
+
                             <b:row>
                                 <b:selectOneMenu id="tipoPedido"
                                                  value="#{pedidoMB.tipoPedido}" 
@@ -259,29 +265,32 @@
 
 
                             <!--                            </b:modal>-->
+                            <b:panel>
+                                <h3>Detalhes da Venda</h3>
+                                <b:inputText readonly="true" id="valorTotal"  value="" label="Valor Total" size="2" span="1" style="bottom: -20px" />
+                                <b:inputText readonly="true" id="quantidadePares"  value="" label="Total de Pares" size="2" span="1" />
+                                
+                                <b:dataTable  columnVisibility="false"
+                                              value="#{pedidoMB.itens}"
+                                              var="itemPedido"
+                                              select="true"
+                                              selectionMode="single"
+                                              searching ="false"
+                                              paginated="false"
+                                              info="false"
+                                              >
 
-                            <b:dataTable  columnVisibility="false"
-                                          value="#{pedidoMB.itens}"
-                                          var="itemPedido"
-                                          select="true"
-                                          selectionMode="single"
-                                          searching ="false"
-                                          paginated="false"
-                                          info="false"
-                                          >
+                                    <b:dataTableColumn value="#{itemPedido.produto.descricao}" label="Item" />
 
-                                <b:dataTableColumn value="#{itemPedido.produto.descricao}" label="Item" />
+                                    <b:dataTableColumn value="#{itemPedido.preco}" label="Preço" />
+                                    <b:dataTableColumn value="#{itemPedido.quantidade}" label="Quantidade" />
+                                    <b:dataTableColumn label="Opções">
+                                        <b:commandButton look="primary" action="#{pedidoMB.removerItem()}" value="Editar" icon="edit"/>
+                                        <b:commandButton look="danger" action="#{pedidoMB.editarItem()}" value="Remover" icon="trash"/>
 
-                                <b:dataTableColumn value="#{itemPedido.preco}" label="Preço" />
-                                <b:dataTableColumn value="#{itemPedido.quantidade}" label="Quantidade" />
-                                <b:dataTableColumn label="Opções">
-                                    <b:commandButton look="primary" action="#{pedidoMB.removerItem()}" value="Editar" icon="edit"/>
-                                    <b:commandButton look="danger" action="#{pedidoMB.editarItem()}" value="Remover" icon="trash"/>
-                                    
-                                </b:dataTableColumn>
-
-
-                            </b:dataTable>
+                                    </b:dataTableColumn>
+                                </b:dataTable>
+                            </b:panel>
 
                             <b:commandButton look="primary" value="Salvar" action="#{pedidoMB.salvar()}" immediate="true" icon-awesome="save" />
                         </b:container>

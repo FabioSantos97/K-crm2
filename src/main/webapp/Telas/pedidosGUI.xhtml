@@ -12,38 +12,47 @@
 
             <b:jumbotron> 
                 <h:panelGroup>
-                    <b:form>
-                        <b:dateTimePicker value=""
-                                          show-time="false"
-                                          label="De:"
-                                          />
-                    </b:form>
-                    <b:form>
-                        <b:dateTimePicker value=""
-                                          show-time="false"
-                                          label="Até:"
-                                          />
-                    </b:form>
-                    <h:form>
-                        <b:dataTable  excel="true"
-                                      columnVisibility="true"
-                                      print="true"
-                                      value="#{pedidoMB.pedidos}"
-                                      var="pedido"
-                                      select="true"
-                                      selectionMode="single"
-                                      >
+                    <b:container fluid="true">
+                        <b:panel>
+                            <b:row>
+                                <b:form>
+                                    <b:dateTimePicker value=""
+                                                      show-time="false"
+                                                      label="De:"
+                                                      span="2"
+                                                      />
+                                </b:form>
+                                <b:form>
+                                    <b:dateTimePicker value=""
+                                                      show-time="false"
+                                                      label="Até:"
+                                                      span="2"
+                                                      />
+                                </b:form>
+                            </b:row>
+                        </b:panel>     
 
-                            <b:dataTableColumn value="#{pedido.cliente.razaoSocial}" label="Cliente" />
-                            <b:dataTableColumn value="#{pedido.tipoPedido.nome}" label="Tipo" />
-                            <b:dataTableColumn value="#{pedido.dataCriacao}" label="Data da Criação" />
-                            <b:dataTableColumn value="#{pedido.transportadora.nomeFantasia}" label="Transportadora" />
-                            <b:dataTableColumn value="#{pedido.condicaoPagamento.condicao}" label="Pagamento" />
-                            <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
+                        <h:form>
+                            <b:dataTable  excel="true"
+                                          columnVisibility="true"
+                                          print="true"
+                                          value="#{pedidoMB.pedidos}"
+                                          var="pedido"
+                                          select="true"
+                                          selectionMode="single"
+                                          >
+
+                                <b:dataTableColumn value="#{pedido.cliente.razaoSocial}" label="Cliente" />
+                                <b:dataTableColumn value="#{pedido.tipoPedido.nome}" label="Tipo" />
+                                <b:dataTableColumn value="#{pedido.dataCriacao}" label="Data da Criação" />
+                                <b:dataTableColumn value="#{pedido.transportadora.nomeFantasia}" label="Transportadora" />
+                                <b:dataTableColumn value="#{pedido.condicaoPagamento.condicao}" label="Pagamento" />
+                                <b:dataTableColumn value="#{pedido.observacoes}" label="Observações" />
 
 
-                        </b:dataTable>
-                    </h:form>
+                            </b:dataTable>
+                        </h:form>
+                    </b:container>
                 </h:panelGroup>
             </b:jumbotron>
 
