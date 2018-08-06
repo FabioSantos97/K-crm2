@@ -116,6 +116,7 @@ public class PedidoMB implements Serializable {
         itemPedido = new ItemPedido();
         gradeVendas = new ArrayList<>();
         produto = new Produto();
+        gradeVenda = new GradeVenda();
     }
 
     public void carregarProdutos() {
