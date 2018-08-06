@@ -23,7 +23,10 @@ import br.com.kadesh.model.ProdutoGrade;
 import br.com.kadesh.model.TipoPedido;
 import br.com.kadesh.model.Transportadora;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -133,9 +136,11 @@ public class PedidoMB implements Serializable {
         System.out.println("Salvo1");
         pedido.setTipoPedido(tipoPedido);
         pedido.setCliente(cliente);
+        pedido.setEnderecoEntrega(endereco);
         pedido.setCondicaoPagamento(condicaoPagamento);
         pedido.setTransportadora(transportadora);
         pedido.setItensPedido(itens);
+        
 
         pedidoDao.saveOrUpdate(pedido);
         System.out.println("Salvo2");

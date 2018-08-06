@@ -176,7 +176,7 @@
                                                 <f:ajax event="change" render="precoMinimo"/>
                                             </b:selectOneMenu>
 
-                                            <b:inputText id="nomeProduto" readonly="true" value="#{pedidoMB.produto.descricao}" label="Produto" size="30" span="5" />
+                                            <b:inputText id="nomeProduto" readonly="true" value="#{pedidoMB.produto.descricao}" label="Produto" size="30" span="4" />
 
                                             <b:selectOneMenu id="opcionais"
                                                              value="#{pedidoMB.opcional}" 
@@ -191,6 +191,28 @@
                                                                itemValue="#{opcional}"
                                                                />
                                             </b:selectOneMenu>
+                                            <b:dataTable 
+                                                id="opcionaisTab"
+                                                columnVisibility="false"
+                                                value="#{pedidoMB.opcionaisDisponiveis}"
+                                                var="opcional"
+                                                select="true"
+                                                selectionMode="single"
+                                                searching ="false"
+                                                paginated="false"
+                                                info="false"
+                                                span="4"
+                                                >
+
+                                                <b:dataTableColumn value="#{opcional.descricao}" label="Opcional" />
+                                                <b:dataTableColumn value="#{opcional.preco}" label="Valor" />
+                                                
+                                                <b:dataTableColumn label="Opções">
+                                                    <b:commandButton type="button" look="danger" action="#{pedidoMB.removerItemGrade(gradeVenda)}" value="Remover" icon="trash" ajax="true" update="gradeNumeros" auto-update="true"/>
+                                                </b:dataTableColumn>
+
+
+                                            </b:dataTable>
 
 
 
