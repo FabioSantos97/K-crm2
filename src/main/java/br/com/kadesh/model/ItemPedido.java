@@ -25,6 +25,7 @@ public class ItemPedido implements Serializable {
 
     private int quantidade;
     private double preco;
+    private double valorItens;
     private double frete;
     private double icms;
     private double pisCofins;
@@ -36,18 +37,23 @@ public class ItemPedido implements Serializable {
     public ItemPedido() {
     }
 
-    public ItemPedido(int id, List<GradeVenda> produtos, Produto produto, int quantidade, double preco, double frete, double icms, double pisCofins, double cprb, List<Opcional> opcionais) {
+    public ItemPedido(int id, List<GradeVenda> produtos, Produto produto, int quantidade, double preco, double valorItens, double frete, double icms, double pisCofins, double cprb, List<Opcional> opcionais) {
         this.id = id;
         this.produtos = produtos;
         this.produto = produto;
         this.quantidade = quantidade;
         this.preco = preco;
+        this.valorItens = valorItens;
         this.frete = frete;
         this.icms = icms;
         this.pisCofins = pisCofins;
         this.cprb = cprb;
         this.opcionais = opcionais;
     }
+
+    
+    
+    
 
     public double getCprb() {
         return cprb;
@@ -71,6 +77,7 @@ public class ItemPedido implements Serializable {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+        setValorItens(this.quantidade * preco);
     }
 
     public double getPreco() {
@@ -127,6 +134,14 @@ public class ItemPedido implements Serializable {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public double getValorItens() {
+        return valorItens;
+    }
+
+    public void setValorItens(double valorItens) {
+        this.valorItens = valorItens;
     }
 
 }

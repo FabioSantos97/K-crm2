@@ -120,6 +120,16 @@ public class PedidoMB implements Serializable {
         gradeVendas = new ArrayList<>();
         produto = new Produto();
         gradeVenda = new GradeVenda();
+        
+        int quantidadeTotal =0;
+        double valorTotal = 0;
+        
+        for (ItemPedido iP : itens){
+            quantidadeTotal = quantidadeTotal + iP.getQuantidade();
+            valorTotal = valorTotal + iP.getValorItens();
+        }
+        pedido.setQuantidade(quantidadeTotal);
+        pedido.setValorTotal(valorTotal);
     }
 
     public void carregarProdutos() {
