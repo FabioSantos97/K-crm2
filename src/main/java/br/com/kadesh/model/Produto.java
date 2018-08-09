@@ -1,14 +1,11 @@
 package br.com.kadesh.model;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Produto implements Serializable {
@@ -23,23 +20,23 @@ public class Produto implements Serializable {
     private double custo;
     private double mcMinima;
     private boolean status;
-    
+
     private double precoSugerido;
     private double precoMinimo;
-    
-    @OneToOne(cascade = {CascadeType.ALL})
+
+    @ManyToOne
     private Grupo grupo;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     private Familia familia;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     private Linha linha;
 
     public Produto() {
     }
 
-    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, Grupo grupo, Familia familia, Linha linha) {
+    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, double precoSugerido, double precoMinimo, Grupo grupo, Familia familia, Linha linha) {
         this.id = id;
         this.descricao = descricao;
         this.referencia = referencia;
@@ -47,6 +44,8 @@ public class Produto implements Serializable {
         this.custo = custo;
         this.mcMinima = mcMinima;
         this.status = status;
+        this.precoSugerido = precoSugerido;
+        this.precoMinimo = precoMinimo;
         this.grupo = grupo;
         this.familia = familia;
         this.linha = linha;
@@ -90,7 +89,7 @@ public class Produto implements Serializable {
 
     public void setCusto(double custo) {
         this.custo = custo;
-        setPrecoSugerido(this.custo+(this.custo*0.20));
+        setPrecoSugerido(this.custo + (this.custo * 0.20));
     }
 
     public double getMcMinima() {
@@ -99,7 +98,7 @@ public class Produto implements Serializable {
 
     public void setMcMinima(double mcMinima) {
         this.mcMinima = mcMinima;
-        setPrecoMinimo(custo+(custo*(this.mcMinima/100)));
+        setPrecoMinimo(custo + (custo * (this.mcMinima / 100)));
     }
 
     public boolean isStatus() {
@@ -149,6 +148,5 @@ public class Produto implements Serializable {
     public void setPrecoMinimo(double precoMinimo) {
         this.precoMinimo = precoMinimo;
     }
-    
 
 }
