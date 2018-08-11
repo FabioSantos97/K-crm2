@@ -87,7 +87,7 @@ public class PedidoMB implements Serializable {
         estados = estadoDao.findAll();
 
         produtos = produtoDao.findAll();
-        produtosGrade = produtoGradeDao.findAll();
+        
         opcionaisDisponiveis = opcionaisDao.findAll();
 
     }
@@ -346,6 +346,7 @@ public class PedidoMB implements Serializable {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+        produtosGrade = this.produto.getNumeracao();
     }
 
     public List<ItemPedido> getItens() {

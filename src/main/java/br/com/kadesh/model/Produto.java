@@ -1,11 +1,13 @@
 package br.com.kadesh.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Produto implements Serializable {
@@ -33,10 +35,13 @@ public class Produto implements Serializable {
     @ManyToOne
     private Linha linha;
 
+    @OneToOne
+    private List<ProdutoGrade> numeracao;
+
     public Produto() {
     }
 
-    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, double precoSugerido, double precoMinimo, Grupo grupo, Familia familia, Linha linha) {
+    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, double precoSugerido, double precoMinimo, Grupo grupo, Familia familia, Linha linha, List<ProdutoGrade> numeracao) {
         this.id = id;
         this.descricao = descricao;
         this.referencia = referencia;
@@ -49,6 +54,7 @@ public class Produto implements Serializable {
         this.grupo = grupo;
         this.familia = familia;
         this.linha = linha;
+        this.numeracao = numeracao;
     }
 
     public int getId() {
@@ -147,6 +153,14 @@ public class Produto implements Serializable {
 
     public void setPrecoMinimo(double precoMinimo) {
         this.precoMinimo = precoMinimo;
+    }
+
+    public List<ProdutoGrade> getNumeracao() {
+        return numeracao;
+    }
+
+    public void setNumeracao(List<ProdutoGrade> numeracao) {
+        this.numeracao = numeracao;
     }
 
 }

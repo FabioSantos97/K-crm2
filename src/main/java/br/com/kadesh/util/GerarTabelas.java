@@ -115,54 +115,7 @@ public class GerarTabelas {
 //        tipoPedido.setDescricao("Venda");
 //        tipoPedidoDao.create(tipoPedido);
 
-        Produto produto = new Produto();
-        produto = produtoDao.find(11);
 
-        ProdutoGradeDao produtoGradeDao = new ProdutoGradeDao();
-        ProdutoGrade pg = new ProdutoGrade();
-        pg.setProduto(produto);
-        pg.setNumeracao(34);
-        produtoGradeDao.create(pg);
-        
-        ProdutoGrade pg2 = new ProdutoGrade();
-        pg2.setProduto(produto);
-        pg2.setNumeracao(35);
-        produtoGradeDao.create(pg2);
-        
-        ProdutoGrade pg3 = new ProdutoGrade();
-        pg3.setProduto(produto);
-        pg3.setNumeracao(36);
-        produtoGradeDao.create(pg3);
-        
-        ProdutoGrade pg4 = new ProdutoGrade();
-        pg4.setProduto(produto);
-        pg4.setNumeracao(37);
-        produtoGradeDao.create(pg4);
-        
-        ProdutoGrade pg5 = new ProdutoGrade();
-        pg5.setProduto(produto);
-        pg5.setNumeracao(38);
-        produtoGradeDao.create(pg5);
-        
-        ProdutoGrade pg6 = new ProdutoGrade();
-        pg6.setProduto(produto);
-        pg6.setNumeracao(39);
-        produtoGradeDao.create(pg6);
-        
-        ProdutoGrade pg7 = new ProdutoGrade();
-        pg7.setProduto(produto);
-        pg7.setNumeracao(40);
-        produtoGradeDao.create(pg7);
-        
-        ProdutoGrade pg8 = new ProdutoGrade();
-        pg8.setProduto(produto);
-        pg8.setNumeracao(41);
-        produtoGradeDao.create(pg8);
-        
-        ProdutoGrade pg9 = new ProdutoGrade();
-        pg9.setProduto(produto);
-        pg9.setNumeracao(42);
-        produtoGradeDao.create(pg9);
 //        
 //        
         

@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class ProdutoGrade implements Serializable {
@@ -13,18 +12,17 @@ public class ProdutoGrade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
-    @OneToOne
-    private Produto produto;
+
     private int numeracao;
+    private String codBarras;
 
     public ProdutoGrade() {
     }
 
-    public ProdutoGrade(int id, Produto produto, int numeracao) {
+    public ProdutoGrade(int id, int numeracao, String codBarras) {
         this.id = id;
-        this.produto = produto;
         this.numeracao = numeracao;
+        this.codBarras = codBarras;
     }
 
     public int getId() {
@@ -35,14 +33,6 @@ public class ProdutoGrade implements Serializable {
         this.id = id;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
     public int getNumeracao() {
         return numeracao;
     }
@@ -51,11 +41,12 @@ public class ProdutoGrade implements Serializable {
         this.numeracao = numeracao;
     }
 
-    @Override
-    public String toString() {
-        return produto.getDescricao() + " " + numeracao ;
+    public String getCodBarras() {
+        return codBarras;
     }
-    
-    
+
+    public void setCodBarras(String codBarras) {
+        this.codBarras = codBarras;
+    }
 
 }
