@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Produto implements Serializable {
@@ -35,7 +35,7 @@ public class Produto implements Serializable {
     @ManyToOne
     private Linha linha;
 
-    @OneToOne
+    @OneToMany
     private List<ProdutoGrade> numeracao;
 
     public Produto() {
