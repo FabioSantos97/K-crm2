@@ -25,6 +25,11 @@ public class ProdutoGrade implements Serializable {
         this.codBarras = codBarras;
     }
 
+    public ProdutoGrade(int id, int numeracao) {
+        this.id = id;
+        this.numeracao = numeracao;
+    }
+
     public int getId() {
         return id;
     }

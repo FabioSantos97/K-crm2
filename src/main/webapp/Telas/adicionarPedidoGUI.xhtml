@@ -174,6 +174,7 @@
                                                 <f:ajax event="change" render="nomeProduto"/>
                                                 <f:ajax event="change" render="precoSugerido"/>
                                                 <f:ajax event="change" render="precoMinimo"/>
+                                                <f:ajax event="change" render="numeracao"/>
                                             </b:selectOneMenu>
 
                                             <b:inputText id="nomeProduto" readonly="true" value="#{pedidoMB.produto.descricao}" label="Produto" size="30" span="4" />
@@ -270,8 +271,8 @@
                                             info="false"
                                             >
 
-                                            <b:dataTableColumn value="#{gradeVenda.grade.produto.referencia}" label="Referencia" />
-                                            <b:dataTableColumn value="#{gradeVenda.grade.produto.descricao}" label="Descrição" />
+                                            <b:dataTableColumn value="#{gradeVenda.produto.referencia}" label="Referencia" />
+                                            <b:dataTableColumn value="#{gradeVenda.produto.descricao}" label="Descrição" />
                                             <b:dataTableColumn value="#{gradeVenda.grade.numeracao}" label="Numero" />
                                             <b:dataTableColumn value="#{gradeVenda.quantidade}" label="Quantidade" />
                                             <b:dataTableColumn label="Opções">
