@@ -57,6 +57,21 @@ public class Produto implements Serializable {
         this.numeracao = numeracao;
     }
 
+    public Produto(int id, String descricao, String referencia, String numeroCa, double custo, double mcMinima, boolean status, double precoSugerido, double precoMinimo, Grupo grupo, Familia familia, Linha linha) {
+        this.id = id;
+        this.descricao = descricao;
+        this.referencia = referencia;
+        this.numeroCa = numeroCa;
+        this.custo = custo;
+        this.mcMinima = mcMinima;
+        this.status = status;
+        this.precoSugerido = precoSugerido;
+        this.precoMinimo = precoMinimo;
+        this.grupo = grupo;
+        this.familia = familia;
+        this.linha = linha;
+    }
+
     public int getId() {
         return id;
     }
