@@ -42,7 +42,6 @@
                                                      label="Cliente"
                                                      span="10"
                                                      select2="true"
-                                                     onchange="#{pedidoMB.carregarEndereco()}"
                                                      >
                                         <f:selectItem itemLabel="Selecione um cliente" />
                                         <f:selectItems value="#{pedidoMB.clientes}"
@@ -312,7 +311,7 @@
 
                                             <b:dataTableColumn value="#{itemPedido.preco}" label="Preço" />
                                             <b:dataTableColumn value="#{itemPedido.quantidade}" label="Quantidade" />
-                                            <b:dataTableColumn value="#{itemPedido.valorItens}" label="Quantidade" />
+                                            <b:dataTableColumn value="#{itemPedido.valorItens}" label="Valor Itens" />
                                             <b:dataTableColumn label="Opções">
                                                 <b:commandButton look="primary" action="#{pedidoMB.removerItem()}" value="Editar" icon="edit"/>
                                                 <b:commandButton look="danger" action="#{pedidoMB.editarItem()}" value="Remover" icon="trash"/>
