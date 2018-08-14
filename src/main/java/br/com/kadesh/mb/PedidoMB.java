@@ -141,8 +141,16 @@ public class PedidoMB implements Serializable {
         estado = endereco.getEstado();
     }
 
+    public void calcularMc() {
+        double mcIten;
+        
+        
+        mcIten = (((itemPedido.getPreco() - produto.getCusto())/itemPedido.getPreco())*100);
+        itemPedido.setMc(mcIten);
+        
+    }
+
     public void salvar() {
-        System.out.println("Salvo1");
         pedido.setTipoPedido(tipoPedido);
         pedido.setCliente(cliente);
         pedido.setEnderecoEntrega(endereco);
@@ -151,7 +159,7 @@ public class PedidoMB implements Serializable {
         pedido.setItensPedido(itens);
 
         pedidoDao.saveOrUpdate(pedido);
-        System.out.println("Salvo2");
+
     }
 
     public void removerItemGrade(GradeVenda gradeVenda) {
@@ -256,7 +264,7 @@ public class PedidoMB implements Serializable {
 
     public Cliente getCliente() {
         return cliente;
-        
+
     }
 
     public void setCliente(Cliente cliente) {

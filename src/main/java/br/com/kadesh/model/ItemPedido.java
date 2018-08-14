@@ -30,6 +30,7 @@ public class ItemPedido implements Serializable {
     private double icms;
     private double pisCofins;
     private double cprb;
+    private double mc;
 
     @OneToMany
     private List<Opcional> opcionais;
@@ -53,8 +54,6 @@ public class ItemPedido implements Serializable {
 
     
     
-    
-
     public double getCprb() {
         return cprb;
     }
@@ -142,6 +141,14 @@ public class ItemPedido implements Serializable {
 
     public void setValorItens(double valorItens) {
         this.valorItens = valorItens;
+    }
+
+    public double getMc() {
+        return mc;
+    }
+
+    public void setMc(double mc) {
+        this.mc = mc;
     }
 
 }

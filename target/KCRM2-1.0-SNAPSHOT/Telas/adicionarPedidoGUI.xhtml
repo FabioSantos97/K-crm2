@@ -130,7 +130,7 @@
                                         <b:inputText id="cidade" span="2" value="#{pedidoMB.endereco.cidade}" label="Cidade" size="30" required="false" />
                                         <b:inputText id="logradouro" span="2" value="#{pedidoMB.endereco.logradouro}" label="Logradouro" size="30" required="false" />
                                         <b:inputText id="bairro" span="2" value="#{pedidoMB.endereco.bairro}" label="Bairro" size="30" required="false" />
-                                        <b:inputText id="cep" span="2" value="#{pedidoMB.endereco.cep}" label="CEP" size="30" required="false" />
+                                        <b:inputText id="cep" span="2" value="#{pedidoMB.endereco.cep}" label="CEP" size="30" mask="99999-999" required="false" />
                                         <b:inputText id="complemento" span="2" value="#{pedidoMB.endereco.complemento}" label="Complemento" size="30" required="false" />
                                     </b:row>
                                     <b:row>
@@ -222,7 +222,12 @@
                                             <b:inputText id="precoSugerido" readonly="true" value="#{pedidoMB.produto.precoSugerido}"  label="Preço Sugerido" mask="R$ 9{1,9}.9{2}" size="2" span="2" />
                                             <b:inputText id="precoMinimo" readonly="true" value="#{pedidoMB.produto.precoMinimo}"  label="Preço Minimo" mask="R$ 9{1,9}.9{2}" size="2" span="2" />
 
-                                            <b:inputText id="preco"  value="#{pedidoMB.itemPedido.preco}" label="Preço" size="2" span="2" />
+                                            <b:inputText id="preco"  value="#{pedidoMB.itemPedido.preco}" label="Preço" size="2" span="2">
+                                                <f:validateDoubleRange minimum="#{pedidoMB.produto.precoMinimo}" />
+
+                                            </b:inputText>
+                                            <b:fetchBeanInfos />
+
                                             <b:inputText id="frete"  value="#{pedidoMB.itemPedido.frete}" label="Valor Frete" size="2" span="2" />
 
                                             <b:inputText readonly="true" id="mcValor"  value="" label="M.C" size="2" span="1" />
