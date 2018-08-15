@@ -1,29 +1,24 @@
-
-
 package br.com.kadesh.model;
 
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Supervisor extends Usuario{
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    
+public class Supervisor extends Usuario {
+
     @OneToMany
     private List<Vendedor> vendedores;
 
     public Supervisor() {
     }
 
-    public Supervisor(int id, List<Vendedor> vendedores) {
-        this.id = id;
+    public Supervisor(List<Vendedor> vendedores) {
+        this.vendedores = vendedores;
+    }
+
+    public Supervisor(List<Vendedor> vendedores, int id, String nome, String email, Setor setor, String senha, boolean status) {
+        super(id, nome, email, setor, senha, status);
         this.vendedores = vendedores;
     }
 
@@ -35,16 +30,4 @@ public class Supervisor extends Usuario{
         this.vendedores = vendedores;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    
-    
-    
 }

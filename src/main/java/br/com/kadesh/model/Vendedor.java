@@ -1,37 +1,36 @@
-
-
 package br.com.kadesh.model;
 
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Vendedor extends Usuario{
+public class Vendedor extends Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    
     @ManyToOne
     private TipoVendedor tipoVendedor;
     private String cnpj;
     private String nomeFantasia;
     private String telefone;
-    
+
     @OneToMany
     private List<Cliente> clientes;
 
     public Vendedor() {
-        
+
     }
 
-    public Vendedor(int id, TipoVendedor tipoVendedor, String cnpj, String nomeFantasia, String telefone, List<Cliente> clientes) {
-        this.id = id;
+    public Vendedor(TipoVendedor tipoVendedor, String cnpj, String nomeFantasia, String telefone, List<Cliente> clientes) {
+        this.tipoVendedor = tipoVendedor;
+        this.cnpj = cnpj;
+        this.nomeFantasia = nomeFantasia;
+        this.telefone = telefone;
+        this.clientes = clientes;
+    }
+
+    public Vendedor(TipoVendedor tipoVendedor, String cnpj, String nomeFantasia, String telefone, List<Cliente> clientes, int id, String nome, String email, Setor setor, String senha, boolean status) {
+        super(id, nome, email, setor, senha, status);
         this.tipoVendedor = tipoVendedor;
         this.cnpj = cnpj;
         this.nomeFantasia = nomeFantasia;
@@ -45,14 +44,6 @@ public class Vendedor extends Usuario{
 
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public TipoVendedor getTipoVendedor() {
@@ -87,12 +78,4 @@ public class Vendedor extends Usuario{
         this.telefone = telefone;
     }
 
-   
-    
-   
-    
-    
-    
-    
-    
 }
