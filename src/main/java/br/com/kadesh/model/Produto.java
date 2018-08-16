@@ -3,6 +3,7 @@ package br.com.kadesh.model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,9 @@ public class Produto implements Serializable {
     private double mcMinima;
     private boolean status;
 
+    @Column(precision = 16, scale = 2)
     private double precoSugerido;
+    @Column(precision = 16, scale = 2)
     private double precoMinimo;
 
     @ManyToOne

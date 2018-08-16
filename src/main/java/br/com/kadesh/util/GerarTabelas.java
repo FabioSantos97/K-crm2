@@ -97,15 +97,11 @@ public class GerarTabelas {
         grades.add(pg13);
         ProdutoGrade pg14 = new ProdutoGrade(0, 47);
         grades.add(pg14);
-        
-        
-        
-        
 
-        Produto produto = new Produto(0, "Botina Elastico", "35202", "11108", 25.50, 10, true, 0, 0, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
-        Produto produto2 = new Produto(0, "Botina Amarrar", "35201", "11109", 25.50, 10, true, 0, 0, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
-        Produto produto3 = new Produto(0, "Sapato Amarrar", "35101", "11110", 25.50, 10, true, 0, 0, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
-        Produto produto4 = new Produto(0, "Sapato Elastico", "35102", "11111", 25.50, 10, true, 0, 0, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
+        Produto produto = new Produto(0, "Botina Elastico", "35202", "11108", 25.50, 10, true, 30.60, 28.50, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
+        Produto produto2 = new Produto(0, "Botina Amarrar", "35201", "11109", 25.50, 10, true, 30.60, 28.50, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
+        Produto produto3 = new Produto(0, "Sapato Amarrar", "35101", "11110", 25.50, 10, true, 30.60, 28.50, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
+        Produto produto4 = new Produto(0, "Sapato Elastico", "35102", "11111", 25.50, 10, true, 30.60, 28.50, grupoDao.find(10), familiaDao.find(13), linhaDao.find(7), grades);
 
         produtoDao.create(produto);
         produtoDao.create(produto2);

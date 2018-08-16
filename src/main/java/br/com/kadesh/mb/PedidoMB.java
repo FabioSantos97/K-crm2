@@ -77,6 +77,9 @@ public class PedidoMB implements Serializable {
         produtoGrade = new ProdutoGrade();
         itemPedido = new ItemPedido();
         gradeVenda = new GradeVenda();
+        transportadora = new Transportadora();
+        tipoPedido = new TipoPedido();
+        condicaoPagamento = new CondicaoPagamento();
     }
 
     public void selectAll() {
@@ -143,18 +146,17 @@ public class PedidoMB implements Serializable {
 
     public void calcularMc() {
         double mcIten;
-        
-        
-        mcIten = (((itemPedido.getPreco() - produto.getCusto())/itemPedido.getPreco())*100);
+
+        mcIten = (((itemPedido.getPreco() - produto.getCusto()) / itemPedido.getPreco()) * 100);
         itemPedido.setMc(mcIten);
-        
+
     }
 
     public void salvar() {
         pedido.setTipoPedido(tipoPedido);
         pedido.setCliente(cliente);
         pedido.setEnderecoEntrega(endereco);
-        pedido.setCondicaoPagamento(condicaoPagamento);
+       // pedido.setCondicaoPagamento(condicaoPagamento);
         pedido.setTransportadora(transportadora);
         pedido.setItensPedido(itens);
 
@@ -170,7 +172,13 @@ public class PedidoMB implements Serializable {
 
     }
 
-    public void editarItem() {
+    public void editarItem(ItemPedido itemPedido) {
+
+        this.itemPedido = new ItemPedido(itemPedido.getId(), itemPedido.getProdutos(),
+                itemPedido.getProduto(), itemPedido.getQuantidade(), itemPedido.getPreco(),
+                itemPedido.getValorItens(), itemPedido.getFrete(), itemPedido.getIcms(),
+                itemPedido.getPisCofins(), itemPedido.getCprb(), itemPedido.getOpcionais());
+        
 
     }
 

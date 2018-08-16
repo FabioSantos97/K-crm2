@@ -319,7 +319,7 @@
                                             <b:dataTableColumn value="#{itemPedido.valorItens}" label="Valor Itens" />
                                             <b:dataTableColumn label="Opções">
                                                 <b:commandButton look="primary" action="#{pedidoMB.removerItem()}" value="Editar" icon="edit"/>
-                                                <b:commandButton look="danger" action="#{pedidoMB.editarItem()}" value="Remover" icon="trash"/>
+                                                <b:commandButton look="danger" action="#{pedidoMB.editarItem(itemPedido)}" value="Remover" icon="trash"/>
                                             </b:dataTableColumn>
                                         </b:dataTable>
 
