@@ -219,8 +219,8 @@
 
                                         </b:row>
                                         <b:row>
-                                            <b:inputText id="precoSugerido" readonly="true" value="#{pedidoMB.produto.precoSugerido}"  label="Preço Sugerido" mask="R$ 9{1,9}.9{2}" size="2" span="2" />
-                                            <b:inputText id="precoMinimo" readonly="true" value="#{pedidoMB.produto.precoMinimo}"  label="Preço Minimo" mask="R$ 9{1,9}.9{2}" size="2" span="2" />
+                                            <b:inputText id="precoSugerido" readonly="true" value="#{pedidoMB.produto.precoSugerido}"  label="Preço Sugerido" mask="R$ 9{1,9}.99" size="2" span="2" />
+                                            <b:inputText id="precoMinimo" readonly="true" value="#{pedidoMB.produto.precoMinimo}"  label="Preço Minimo" mask="R$ 9{1,9}.99" size="2" span="2" />
 
                                             <b:inputText id="preco"  value="#{pedidoMB.itemPedido.preco}" label="Preço" size="2" span="2">
                                                 <f:validateDoubleRange minimum="#{pedidoMB.produto.precoMinimo}" />

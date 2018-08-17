@@ -26,9 +26,9 @@ public class Produto implements Serializable {
     private double mcMinima;
     private boolean status;
 
-    @Column(precision = 16, scale = 2)
+    @Column(columnDefinition = "Decimal(10,2)")
     private double precoSugerido;
-    @Column(precision = 16, scale = 2)
+    @Column(columnDefinition = "Decimal(10,2)")
     private double precoMinimo;
 
     @ManyToOne
@@ -40,8 +40,8 @@ public class Produto implements Serializable {
     @ManyToOne
     private Linha linha;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
-    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
     private List<ProdutoGrade> numeracao;
 
     public Produto() {
