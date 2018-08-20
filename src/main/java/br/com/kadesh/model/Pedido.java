@@ -33,7 +33,7 @@ public class Pedido implements Serializable {
 
     private String numeroOrdemCompra;
     private String observacoes;
-    private String situacao;
+    private SituacaoEnum situacao;
 
     private double valorTotal;
     private int quantidade;
@@ -47,7 +47,7 @@ public class Pedido implements Serializable {
     public Pedido() {
     }
 
-    public Pedido(int id, Cliente cliente, Transportadora transportadora, Endereco enderecoEntrega, CondicaoPagamento condicaoPagamento, TipoPedido tipoPedido, String numeroOrdemCompra, String observacoes, String situacao, double valorTotal, int quantidade, Date dataCriacao, List<ItemPedido> itensPedido) {
+    public Pedido(int id, Cliente cliente, Transportadora transportadora, Endereco enderecoEntrega, CondicaoPagamento condicaoPagamento, TipoPedido tipoPedido, String numeroOrdemCompra, String observacoes, SituacaoEnum situacao, double valorTotal, int quantidade, Date dataCriacao, List<ItemPedido> itensPedido) {
         this.id = id;
         this.cliente = cliente;
         this.transportadora = transportadora;
@@ -61,14 +61,6 @@ public class Pedido implements Serializable {
         this.quantidade = quantidade;
         this.dataCriacao = dataCriacao;
         this.itensPedido = itensPedido;
-    }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
     }
 
     public List<ItemPedido> getItensPedido() {
@@ -170,6 +162,14 @@ public class Pedido implements Serializable {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public SituacaoEnum getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoEnum situacao) {
+        this.situacao = situacao;
     }
 
 }

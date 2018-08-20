@@ -25,17 +25,19 @@ public class Cliente implements Serializable {
     private String ramoAtividade;
     private String segmento;
     private String emailNFE;
+    private double limite;
+    private double limiteDisponivel;
 
     @OneToMany
     private List<Contato> contatos;
-    
+
     @ManyToOne(cascade = {CascadeType.ALL})
     private Endereco endereco;
 
     public Cliente() {
     }
 
-    public Cliente(int id, String cnpj, String razaoSocial, String nomeFantasia, String inscricaoEstadual, int numeroFuncionarios, String ramoAtividade, String segmento, String emailNFE, List<Contato> contatos, Endereco endereco) {
+    public Cliente(int id, String cnpj, String razaoSocial, String nomeFantasia, String inscricaoEstadual, int numeroFuncionarios, String ramoAtividade, String segmento, String emailNFE, double limite, double limiteDisponivel, List<Contato> contatos, Endereco endereco) {
         this.id = id;
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;
@@ -45,6 +47,8 @@ public class Cliente implements Serializable {
         this.ramoAtividade = ramoAtividade;
         this.segmento = segmento;
         this.emailNFE = emailNFE;
+        this.limite = limite;
+        this.limiteDisponivel = limiteDisponivel;
         this.contatos = contatos;
         this.endereco = endereco;
     }
@@ -135,6 +139,22 @@ public class Cliente implements Serializable {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public double getLimite() {
+        return limite;
+    }
+
+    public void setLimite(double limite) {
+        this.limite = limite;
+    }
+
+    public double getLimiteDisponivel() {
+        return limiteDisponivel;
+    }
+
+    public void setLimiteDisponivel(double limiteDisponivel) {
+        this.limiteDisponivel = limiteDisponivel;
     }
 
 }

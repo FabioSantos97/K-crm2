@@ -48,4 +48,15 @@ public class Estado implements Serializable {
         this.sigla = sigla;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Estado e = (Estado) obj;
+        return this.id == e.getId();
+    }
+
 }

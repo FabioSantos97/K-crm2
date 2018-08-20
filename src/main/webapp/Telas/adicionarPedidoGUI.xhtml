@@ -55,14 +55,6 @@
 
                                 </b:row>
                                 <b:row>
-                                    <b:column span="2">
-                                        <b:message for="tipoPedido"/>
-                                    </b:column>
-                                    <b:column span="6">
-                                        <b:message for="cliente"/>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
                                     <b:selectOneMenu id="condpag"
                                                      value="#{pedidoMB.condicaoPagamento}" 
                                                      required="true"
@@ -99,6 +91,8 @@
 
                                 </b:row>
                                 <b:row>
+                                    <b:message for="tipoPedido"/>
+                                    <b:message for="cliente"/>
                                     <b:message for="condpag"/>
                                     <b:message for="transportadora"/>
                                     <b:message for="ordemCompra"/>
@@ -109,8 +103,7 @@
 
 
 
-                                <b:panel id="divEnd">
-                                    <h3>Endereço de Entrega</h3>
+                                <b:panel id="divEnd" title="Endereço de Entrega">
                                     <b:row>
                                         <b:selectOneMenu id="estado"
                                                          value="#{pedidoMB.estado}" 
@@ -119,19 +112,20 @@
                                                          span="2"
                                                          select2="true"
                                                          >
+                                            <f:converter converterId="estadoConverter"/>
                                             <f:selectItem itemLabel="Estado" />
                                             <f:selectItems value="#{pedidoMB.estados}"
                                                            var="estado" 
-                                                           itemLabel="#{estado.nome}"
+                                                           itemLabel="#{estado}"
                                                            itemValue="#{estado}"
                                                            />
                                         </b:selectOneMenu>
 
-                                        <b:inputText id="cidade" span="2" value="#{pedidoMB.endereco.cidade}" label="Cidade" size="30" required="false" />
-                                        <b:inputText id="logradouro" span="2" value="#{pedidoMB.endereco.logradouro}" label="Logradouro" size="30" required="false" />
-                                        <b:inputText id="bairro" span="2" value="#{pedidoMB.endereco.bairro}" label="Bairro" size="30" required="false" />
-                                        <b:inputText id="cep" span="2" value="#{pedidoMB.endereco.cep}" label="CEP" size="30" mask="99999-999" required="false" />
-                                        <b:inputText id="complemento" span="2" value="#{pedidoMB.endereco.complemento}" label="Complemento" size="30" required="false" />
+                                        <b:inputText id="cidade" span="2" value="#{pedidoMB.endereco.cidade}" label="Cidade" size="30" required="true" />
+                                        <b:inputText id="logradouro" span="2" value="#{pedidoMB.endereco.logradouro}" label="Logradouro" size="30" required="true" />
+                                        <b:inputText id="bairro" span="2" value="#{pedidoMB.endereco.bairro}" label="Bairro" size="30" required="true" />
+                                        <b:inputText id="cep" span="2" value="#{pedidoMB.endereco.cep}" label="CEP" size="30" mask="99999-999" required="true" />
+                                        <b:inputText id="complemento" span="2" value="#{pedidoMB.endereco.complemento}" label="Complemento" size="30" required="true" />
                                     </b:row>
                                     <b:row>
                                         <b:message for="estado" />
@@ -146,9 +140,7 @@
 
 
                                 <b:form>
-                                    <b:panel id="itensVenda">
-
-                                        <h3>Itens da Vendas</h3>
+                                    <b:panel id="itensVenda" title="Itens da Vendas">
 
 
                                         <!--                            <b:button onclick="$('.responsiveModalPseudoClass').modal('show')" value="Adicionar Item"/>
@@ -273,6 +265,7 @@
                                             searching ="false"
                                             paginated="false"
                                             info="false"
+                                            customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
                                             >
 
                                             <b:dataTableColumn value="#{gradeVenda.produto.referencia}" label="Referencia" />
@@ -294,9 +287,7 @@
 
 
                                     <!--                            </b:modal>-->
-                                    <b:panel id="dtVenda">
-
-                                        <h3>Detalhes da Venda</h3>
+                                    <b:panel id="dtVenda" title="Detalhes da Venda">
                                         <b:inputText readonly="true" id="valorTotal"  value="#{pedidoMB.pedido.valorTotal}" label="Valor Total" mask="R$ 9{1,9}.00[00]" size="2" span="2" style="bottom: -20px" />
                                         <b:inputText readonly="true" id="quantidadePares"  value="#{pedidoMB.pedido.quantidade}" label="Total de Pares"  size="2" span="2" />
 
@@ -310,6 +301,7 @@
                                             searching ="false"
                                             paginated="false"
                                             info="false"
+                                            customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
                                             >
 
                                             <b:dataTableColumn value="#{itemPedido.produto.descricao}" label="Item" />
