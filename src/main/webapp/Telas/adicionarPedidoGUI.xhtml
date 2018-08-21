@@ -27,6 +27,7 @@
                                                      label="Tipo"
                                                      span="2"
                                                      select2="true"
+                                                     converter="omnifaces.SelectItemsConverter"
                                                      >
                                         <f:selectItem itemLabel="Tipo de Pedido" />
                                         <f:selectItems value="#{pedidoMB.tipoPedidos}"
@@ -42,6 +43,7 @@
                                                      label="Cliente"
                                                      span="10"
                                                      select2="true"
+                                                     converter="omnifaces.SelectItemsConverter" 
                                                      >
                                         <f:selectItem itemLabel="Selecione um cliente" />
                                         <f:selectItems value="#{pedidoMB.clientes}"
@@ -60,6 +62,7 @@
                                                      required="true"
                                                      label="Condição de Pagamento"
                                                      span="2"
+                                                     converter="omnifaces.SelectItemsConverter" 
                                                      >
                                         <f:selectItem itemLabel="Condição de pagamento" />
                                         <f:selectItems value="#{pedidoMB.condicoes}"
@@ -74,6 +77,7 @@
                                                      required="true"
                                                      label="Transportadora"
                                                      span="4"
+                                                     converter="omnifaces.SelectItemsConverter"
                                                      >
                                         <f:selectItem itemLabel="Selecione uma Transportadora" />
                                         <f:selectItems value="#{pedidoMB.transportadoras}"
@@ -155,6 +159,7 @@
                                                              label="Referencia"
                                                              span="2"
                                                              select2="true"
+                                                             converter="omnifaces.SelectItemsConverter"
                                                              >
                                                 <f:selectItem itemLabel="Produto" />
                                                 <f:selectItems value="#{pedidoMB.produtos}"

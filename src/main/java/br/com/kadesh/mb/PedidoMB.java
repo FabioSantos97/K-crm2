@@ -20,6 +20,7 @@ import br.com.kadesh.model.Opcional;
 import br.com.kadesh.model.Pedido;
 import br.com.kadesh.model.Produto;
 import br.com.kadesh.model.ProdutoGrade;
+import br.com.kadesh.model.SituacaoEnum;
 import br.com.kadesh.model.TipoPedido;
 import br.com.kadesh.model.Transportadora;
 import java.io.Serializable;
@@ -77,9 +78,7 @@ public class PedidoMB implements Serializable {
         produtoGrade = new ProdutoGrade();
         itemPedido = new ItemPedido();
         gradeVenda = new GradeVenda();
-        transportadora = new Transportadora();
-        tipoPedido = new TipoPedido();
-        condicaoPagamento = new CondicaoPagamento();
+
     }
     
     public void selectAll() {
@@ -153,12 +152,13 @@ public class PedidoMB implements Serializable {
     }
     
     public void salvar() {
-        //pedido.setTipoPedido(tipoPedido);
+        pedido.setTipoPedido(tipoPedido);
         pedido.setCliente(cliente);
         pedido.setEnderecoEntrega(endereco);
-        //pedido.setCondicaoPagamento(condicaoPagamento);
-        //pedido.setTransportadora(transportadora);
+        pedido.setCondicaoPagamento(condicaoPagamento);
+        pedido.setTransportadora(transportadora);
         pedido.setItensPedido(itens);
+        pedido.setSituacao(SituacaoEnum.FINANCEIRO);
         
         pedidoDao.create(pedido);
         

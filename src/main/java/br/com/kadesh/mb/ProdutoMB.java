@@ -10,11 +10,14 @@ import br.com.kadesh.model.Linha;
 import br.com.kadesh.model.Produto;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ProdutoMB implements Serializable {
 
     private ProdutoDao produtoDao = new ProdutoDao();
@@ -27,13 +30,13 @@ public class ProdutoMB implements Serializable {
     private List<Linha> linhas;
     private List<Grupo> grupos;
 
-    private Produto produto;
-    private Familia familia;
-    private Linha linha;
-    private Grupo grupo;
+    private Produto produto = new Produto();
+    private Familia familia = new Familia();
+    private Linha linha = new Linha();
+    private Grupo grupo = new Grupo();
 
     public ProdutoMB() {
-        selectAll();
+        
         produto = new Produto();
     }
 
@@ -42,12 +45,13 @@ public class ProdutoMB implements Serializable {
         produto.setFamilia(familia);
         produto.setLinha(linha);
         produto.setGrupo(grupo);
-
-        produtoDao.saveOrUpdate(produto);
+        produtoDao.create(produto);
+        
         produto = new Produto();
         System.out.println("Salvo2");
     }
 
+    @PostConstruct
     public void selectAll() {
         produtos = produtoDao.findAll();
         familias = familiaDao.findAll();
@@ -55,8 +59,6 @@ public class ProdutoMB implements Serializable {
         grupos = grupoDao.findAll();
     }
 
-    
-    
     public ProdutoDao getProdutoDao() {
         return produtoDao;
     }

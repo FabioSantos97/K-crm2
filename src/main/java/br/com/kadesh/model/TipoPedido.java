@@ -49,5 +49,16 @@ public class TipoPedido implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        TipoPedido tp = (TipoPedido) obj;
+        return this.id == tp.getId();
+    }
 
 }

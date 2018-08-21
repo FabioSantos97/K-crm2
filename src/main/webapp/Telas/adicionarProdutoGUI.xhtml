@@ -29,6 +29,7 @@
                                                  label="Familia"
                                                  span="3"
                                                  select2="true"
+                                                 converter="omnifaces.SelectItemsConverter"
                                                  >
                                     <f:selectItem itemLabel="Selecione uma Familia" />
                                     <f:selectItems value="#{produtoMB.familias}"
@@ -44,6 +45,7 @@
                                                  label="Linha"
                                                  span="3"
                                                  select2="true"
+                                                 converter="omnifaces.SelectItemsConverter"
                                                  >
                                     <f:selectItem itemLabel="Selecione uma Linha" />
                                     <f:selectItems value="#{produtoMB.linhas}"
@@ -59,6 +61,7 @@
                                                  label="Grupo"
                                                  span="3"
                                                  select2="true"
+                                                 converter="omnifaces.SelectItemsConverter"
                                                  >
                                     <f:selectItem itemLabel="Selecione um Grupo" />
                                     <f:selectItems value="#{produtoMB.grupos}"

@@ -2,7 +2,6 @@ package br.com.kadesh.util.converter;
 
 import br.com.kadesh.dao.impl.EstadoDao;
 import br.com.kadesh.model.Estado;
-import java.lang.annotation.Annotation;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
