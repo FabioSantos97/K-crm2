@@ -138,6 +138,8 @@ public class PedidoMB implements Serializable {
         }
         pedido.setQuantidade(quantidadeTotal);
         pedido.setValorTotal(valorTotal);
+
+        produto = new Produto();
     }
 
     public void carregarProdutos() {
@@ -182,6 +184,7 @@ public class PedidoMB implements Serializable {
         itemPedido = new ItemPedido();
         gradeVenda = new GradeVenda();
         opcional = new Opcional();
+        itens = new ArrayList<>();
 
     }
 

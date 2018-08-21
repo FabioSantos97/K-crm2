@@ -1,4 +1,3 @@
-
 package br.com.kadesh.model;
 
 import java.io.Serializable;
@@ -57,5 +56,16 @@ public class Linha implements Serializable {
 
     public void setNomeReduzido(String nomeReduzido) {
         this.nomeReduzido = nomeReduzido;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Linha l = (Linha) obj;
+        return this.id == l.getId();
     }
 }

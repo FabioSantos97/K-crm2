@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Opcional implements Serializable{
+public class Opcional implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,10 +68,15 @@ public class Opcional implements Serializable{
         this.preco = preco;
     }
 
-    
-    
-    
-    
-    
-    
+    @Override
+    public String toString() {
+        return descricao;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Opcional o = (Opcional) obj;
+        return this.id == o.getId();
+    }
+
 }

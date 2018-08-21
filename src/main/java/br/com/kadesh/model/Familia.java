@@ -26,8 +26,6 @@ public class Familia implements Serializable {
         this.nomeReduzido = nomeReduzido;
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -58,6 +56,17 @@ public class Familia implements Serializable {
 
     public void setNomeReduzido(String nomeReduzido) {
         this.nomeReduzido = nomeReduzido;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Familia f = (Familia) obj;
+        return this.id == f.getId();
     }
 
 }

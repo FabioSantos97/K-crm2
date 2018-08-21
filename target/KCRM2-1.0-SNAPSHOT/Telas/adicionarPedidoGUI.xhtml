@@ -107,7 +107,7 @@
 
 
 
-                                <b:panel id="divEnd" title="Endereço de Entrega">
+                                <b:panel id="divEnd" title="Endereço de Entrega" collapsible="false">
                                     <b:row>
                                         <b:selectOneMenu id="estado"
                                                          value="#{pedidoMB.estado}" 
@@ -144,7 +144,7 @@
 
 
 
-                                <b:panel id="itensVenda" title="Itens da Vendas">
+                                <b:panel id="itensVenda" title="Itens da Vendas" collapsible="false">
 
 
                                     <!--                            <b:button onclick="$('.responsiveModalPseudoClass').modal('show')" value="Adicionar Item"/>
@@ -155,7 +155,7 @@
                                     <b:row style=" ">
                                         <b:selectOneMenu id="produto"
                                                          value="#{pedidoMB.produto}" 
-                                                         required="true"
+                                                         required="false"
                                                          label="Referencia"
                                                          span="2"
                                                          select2="true"
@@ -207,13 +207,7 @@
                                             <b:dataTableColumn label="Opções">
                                                 <b:commandButton type="button" look="danger" action="#{pedidoMB.removerItemGrade(gradeVenda)}" value="Remover" icon="trash" ajax="true" update="gradeNumeros" auto-update="true"/>
                                             </b:dataTableColumn>
-
-
                                         </b:dataTable>
-
-
-
-
                                     </b:row>
                                     <b:row>
                                         <b:inputText id="precoSugerido" readonly="true" value="#{pedidoMB.produto.precoSugerido}"  label="Preço Sugerido" mask="R$ 9{1,9}.99" size="2" span="2" />
@@ -227,7 +221,7 @@
 
                                         <b:inputText id="frete"  value="#{pedidoMB.itemPedido.frete}" label="Valor Frete" size="2" span="2" />
 
-                                        <b:inputText readonly="true" id="mcValor"  value="" label="M.C" size="2" span="1" />
+                                        <b:inputText readonly="true" id="mcValor"  value="#{pedidoMB.itemPedido.mc}" label="M.C" size="2" span="1" />
                                         <b:inputText readonly="true" id="mcPorcentagem"  value="" label="M.C %" size="2" span="1" />
                                     </b:row>
                                     <b:row>
@@ -292,7 +286,7 @@
 
 
                                 <!--                            </b:modal>-->
-                                <b:panel id="dtVenda" title="Detalhes da Venda">
+                                <b:panel id="dtVenda" title="Detalhes da Venda" collapsible="false">
                                     <b:inputText readonly="true" id="valorTotal"  value="#{pedidoMB.pedido.valorTotal}" label="Valor Total" mask="R$ 9{1,9}.00[00]" size="2" span="2" style="bottom: -20px" />
                                     <b:inputText readonly="true" id="quantidadePares"  value="#{pedidoMB.pedido.quantidade}" label="Total de Pares"  size="2" span="2" />
 

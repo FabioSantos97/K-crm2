@@ -48,4 +48,15 @@ public class TipoRelacionamento implements Serializable {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        TipoRelacionamento tr = (TipoRelacionamento) obj;
+        return this.id == tr.getId();
+    }
+
 }

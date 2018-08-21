@@ -17,10 +17,10 @@ public class Transportadora implements Serializable {
     private String razaoSocial;
     private String cnpj;
     private String nomeFantasia;
-    
+
     @OneToMany
     private List<Regiao> regioesAtendidas;
-    
+
     private boolean status;
 
     public Transportadora() {
@@ -83,4 +83,14 @@ public class Transportadora implements Serializable {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return nomeFantasia;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Transportadora t = (Transportadora) obj;
+        return this.id == t.getId();
+    }
 }

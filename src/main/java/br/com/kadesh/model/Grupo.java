@@ -1,4 +1,3 @@
-
 package br.com.kadesh.model;
 
 import java.io.Serializable;
@@ -57,6 +56,17 @@ public class Grupo implements Serializable {
 
     public void setNomeReduzido(String nomeReduzido) {
         this.nomeReduzido = nomeReduzido;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Grupo g = (Grupo) obj;
+        return this.id == g.getId();
     }
 
 }

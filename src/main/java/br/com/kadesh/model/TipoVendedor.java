@@ -38,4 +38,15 @@ public class TipoVendedor implements Serializable {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return tipo;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        TipoVendedor tv = (TipoVendedor) obj;
+        return this.id == tv.getId();
+    }
+
 }

@@ -48,4 +48,15 @@ public class CondicaoPagamento implements Serializable {
         this.condicao = condicao;
     }
 
+    @Override
+    public String toString() {
+        return condicao;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        CondicaoPagamento cp = (CondicaoPagamento) obj;
+        return this.id == cp.getId();
+    }
+
 }

@@ -16,7 +16,7 @@ public class Regiao implements Serializable {
     private int id;
     private String nome;
     private String sigla;
-    
+
     @OneToMany
     private List<Estado> estados;
 
@@ -60,6 +60,17 @@ public class Regiao implements Serializable {
 
     public void setEstados(List<Estado> estados) {
         this.estados = estados;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Regiao r = (Regiao) obj;
+        return this.id == r.getId();
     }
 
 }

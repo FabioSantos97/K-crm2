@@ -38,4 +38,15 @@ public class Setor implements Serializable {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Setor s = (Setor) obj;
+        return this.id == s.getId();
+    }
+
 }

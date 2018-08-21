@@ -157,4 +157,15 @@ public class Cliente implements Serializable {
         this.limiteDisponivel = limiteDisponivel;
     }
 
+    @Override
+    public String toString() {
+        return razaoSocial;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Cliente c = (Cliente) obj;
+        return this.id == c.getId();
+    }
+
 }
