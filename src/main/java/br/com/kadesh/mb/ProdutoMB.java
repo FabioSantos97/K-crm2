@@ -30,23 +30,27 @@ public class ProdutoMB implements Serializable {
     private List<Linha> linhas;
     private List<Grupo> grupos;
 
-    private Produto produto = new Produto();
-    private Familia familia = new Familia();
-    private Linha linha = new Linha();
-    private Grupo grupo = new Grupo();
+    private Produto produto;
+    private Familia familia;
+    private Linha linha;
+    private Grupo grupo;
 
     public ProdutoMB() {
         
         produto = new Produto();
+        familia = new Familia();
+        linha = new Linha();
+        grupo = new Grupo();
     }
-
+    
     public void salvar() {
         System.out.println("Salvo1");
         produto.setFamilia(familia);
         produto.setLinha(linha);
         produto.setGrupo(grupo);
+
         produtoDao.create(produto);
-        
+
         produto = new Produto();
         System.out.println("Salvo2");
     }

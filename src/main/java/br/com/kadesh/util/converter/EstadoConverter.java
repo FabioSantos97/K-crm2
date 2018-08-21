@@ -10,7 +10,7 @@ import javax.faces.convert.FacesConverter;
 @FacesConverter("estadoConverter")
 public class EstadoConverter implements Converter {
 
-@Override
+    @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if (value == null || value.isEmpty()) {
             return null;
@@ -31,10 +31,5 @@ public class EstadoConverter implements Converter {
             return null;
         }
     }
-
-
-
-
-   
 
 }
